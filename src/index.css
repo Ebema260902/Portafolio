@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    50% { transform: translate(10px, 15px) rotate(5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+    
+.gradient-shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(40px);
+    animation: float 15s infinite ease-in-out;
+    z-index: -1;
+}
+
+/* Green */
+.shape1 {
+    top: -50px;
+    left: -50px;
+    background: linear-gradient(45deg, #dbe0dd, #e2f5ff);
+    animation-delay: -2s;
+}
+
+/* Purple */
+.shape2 {
+    top: 50%;
+    left: 10%;
+    background: linear-gradient(45deg, #a8c0ff, #d5d3e1);
+    animation-delay: -1s;
+    filter: blur(40px);
+}
+
+/* Pink */
+.shape3 {
+    top: -100px;
+    right: 20%;
+    background: linear-gradient(45deg, #ffd1ff, #e2dcdc);
+    animation-delay: -3s;
+    filter: blur(40px);
+}
+    
+/* Green 2 */
+.shape4 {
+    bottom: -100px;
+    left: 90rem;
+    background: linear-gradient(45deg, #84fab0, #ffd1ff);
+    animation-delay: -4s;
+}
+html {
+    scroll-behavior: smooth;
+}
