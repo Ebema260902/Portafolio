@@ -42,9 +42,10 @@
 .shape3 {
     top: -100px;
     right: 20%;
-    background: linear-gradient(45deg, #ffd1ff, #e2dcdc);
+    background: linear-gradient(45deg, #90beff, #e2dcdc);
     animation-delay: -3s;
     filter: blur(40px);
+    opacity: 0.2;
 }
     
 /* Green 2 */

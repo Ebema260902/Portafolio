@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
@@ -24,7 +24,7 @@ function App() {
         <Route path="/ticolancer" element={<Ticolancer />} />
         <Route path="/jint" element={<Jint />} />
         <Route path="/kimchis" element={<Kimchis />} />
-        <Route path="/contact" element={<Contact />} />https://github.com/Ebema260902
+        <Route path="/contact" element={<Contact />} />
 
       </Routes>
       <Footer />

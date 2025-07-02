@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../index.css";
 
 const Projects = () => {
     return (
-        <div id="projects" className="py-40 text-center">
+        <div id="projects" className="py-40 px-4 sm:px-6 text-center">
             <h1 className="text-black text-5xl font-bold mb-6">PROYECTOS</h1>
             <p className="text-gray-600 text-xl mb-10">Algunos de los trabajos que he desarrollado</p>
 

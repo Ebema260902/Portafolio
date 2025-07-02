@@ -1,43 +1,20 @@
-import React from "react";
-import "../index.css";
+import React, { useState } from "react";
 
 const Navbar = () => {
-    return (
-        <nav
-            className="fixed top-8 flex items-center justify-between max-w-7xl w-full bg-black/10 backdrop-blur-lg rounded-xl px-6 py-2 transition-all duration-300 z-20"
-        >
-            {/* Logo */}
-            <a href="/" className="text-black font-bold text-xl flex items-center">
-                <span className="text-red-500">
-                    {/* Si necesitas un logo, agrégalo aquí */}
-                </span>
-            </a>
+  const [isOpen, setIsOpen] = useState(false);
 
-            {/* Menú de navegación */}
-            <ul className="flex items-center gap-16 text-sm font-semibold text-gray-700">
-                <a href="/" className="hover:text-black">
-                    <li>Inicio</li>
-                </a>
-                <a href="/projects" className="hover:text-black">
-                    <li>Proyectos</li>
-                </a>
-                <a href="/contact" className="hover:text-black">
-                    <li>Contacto</li>
-                </a>
-                {/* <a href="/blog" className="hover:text-black">
-                    <li>Blog</li>
-                </a> */}
-            </ul>
-
-            {/* Idioma y menú */}
-            <div className="flex gap-4 items-center">
-                {/* <a href="#" className="text-black hover:text-gray-600 cursor-pointer">EN</a>
-                <button className="text-black hover:text-gray-600 cursor-pointer text-xl">
-                    ☰
-                </button> */}
-            </div>
-        </nav>
-    );
+  return (
+    <>
+      {/* Navbar desktop */}
+      <nav className="fixed top-8 left-0 right-0 flex justify-center max-w-7xl mx-auto w-full bg-black/10 backdrop-blur-lg lg:rounded-xl  px-6 py-2 z-20">
+        <ul className="flex gap-16 text-sm font-semibold text-gray-700">
+          <li><a href="/" className="hover:text-black">Inicio</a></li>
+          <li><a href="/projects" className="hover:text-black">Proyectos</a></li>
+          <li><a href="/contact" className="hover:text-black">Contacto</a></li>
+        </ul>
+      </nav>
+    </>
+  );
 };
 
 export default Navbar;
