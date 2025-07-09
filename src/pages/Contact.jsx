@@ -17,7 +17,7 @@ const Contact = () => {
           </a>
 
           <a
-            href="www.linkedin.com/in/emanuel-agüero-moya-21b6b81a4"
+            href="https://www.linkedin.com/in/emanuel-ag%C3%BCero-moya-21b6b81a4/"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 bg-blue-50 hover:bg-blue-100 text-blue-700 px-6 py-3 rounded-xl w-full justify-center transition"
