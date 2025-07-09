@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -6,6 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const Kimchis = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalImage, setModalImage] = useState(null);
+
     const technologies = [
         { src: "assets/images/icons/php.png", name: "PHP" },
         { src: "assets/images/icons/heidisql.png", name: "HeidiSQL" },
@@ -16,8 +19,27 @@ const Kimchis = () => {
         { src: "assets/images/icons/github-logo.png", name: "GitHub" },
     ];
 
+    const sliderImages = [
+        "kimchis1",
+        "kimchis2",
+        "kimchis3",
+        "kimchis4",
+        "kimchis5",
+        "kimchis6",
+    ];
+
+    const openModal = (src) => {
+        setModalImage(src);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setModalImage(null);
+    };
+
     return (
-        <div id="kimchis" className="w-full py-48 text-center">
+        <div id="kimchis" className="w-full py-30 text-center">
             {/* Título principal */}
             <h1 className="text-black text-6xl font-bold mb-8">Kimchis</h1>
             <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
@@ -33,7 +55,6 @@ const Kimchis = () => {
 
             {/* Slider */}
             <div className="max-w-5xl mx-auto mb-24 px-4 sm:px-0">
-
                 <Swiper
                     modules={[Autoplay, Navigation, Pagination]}
                     spaceBetween={30}
@@ -43,24 +64,40 @@ const Kimchis = () => {
                     pagination={{ clickable: true }}
                     className="rounded-lg shadow-lg"
                 >
-                    {[
-                        "kimchis1",
-                        "kimchis2",
-                        "kimchis3",
-                        "kimchis4",
-                        "kimchis5",
-                        "kimchis6",
-                    ].map((img, i) => (
+                    {sliderImages.map((img, i) => (
                         <SwiperSlide key={i}>
                             <img
                                 src={`assets/images/kimchis/${img}.png`}
                                 alt={`Kimchis ${img}`}
-                                className="w-full h-[440px] object-cover rounded-lg"
+                                className="w-full h-[440px] object-cover rounded-lg cursor-pointer"
+                                onClick={() => openModal(`assets/images/kimchis/${img}.png`)}
                             />
                         </SwiperSlide>
                     ))}
                 </Swiper>
             </div>
+
+            {/* Modal para imagen ampliada */}
+            {modalOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-pointer"
+                    onClick={closeModal}
+                >
+                    <img
+                        src={modalImage}
+                        alt="Imagen ampliada"
+                        className="max-w-full max-h-full rounded-lg"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    <button
+                        onClick={closeModal}
+                        className="absolute top-5 right-5 text-white bg-black bg-opacity-70 rounded-full p-2 text-3xl font-bold hover:bg-opacity-90"
+                        aria-label="Cerrar modal"
+                    >
+                        &times;
+                    </button>
+                </div>
+            )}
 
             {/* Contenido descriptivo */}
             <div className="max-w-4xl mx-auto px-6 text-left text-gray-800">

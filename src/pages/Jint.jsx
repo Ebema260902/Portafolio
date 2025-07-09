@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -6,102 +6,133 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const Jint = () => {
-    const technologies = [
-        { src: "assets/images/icons/php.png", name: "PHP" },
-        { src: "assets/images/icons/heidisql.png", name: "HeidiSQL" },
-        { src: "assets/images/icons/laravel.png", name: "Laravel" },
-        { src: "assets/images/icons/react.png", name: "React" },
-        { src: "assets/images/icons/tailwind.png", name: "Tailwind CSS" },
-        { src: "assets/images/icons/swiper.png", name: "Swiper.js" },
-        { src: "assets/images/icons/js.webp", name: "JavaScript" },
-        { src: "assets/images/icons/html.png", name: "HTML5" },
-        { src: "assets/images/icons/css.png", name: "CSS3" },
-        { src: "assets/images/icons/github-logo.png", name: "GitHub" },
-    ];
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalImage, setModalImage] = useState(null);
 
-    return (
-        <div id="jint" className="w-full py-48 text-center">
-            {/* Título principal */}
-            <h1 className="text-black text-6xl font-bold mb-8">Jint</h1>
-            <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
-                Gestión eficiente de tareas
-            </p>
-            <a href="https://github.com/Ebema260902/Jint" className="inline-block mb-14">
-                <img 
-                    className="w-[48px] mx-auto hover:scale-110 transition-transform duration-300 cursor-pointer rounded-full"  
-                    src="assets/images/icons/github-logo.png" 
-                    alt="GitHub Logo"
-                />
-            </a>
+  const technologies = [
+    { src: "assets/images/icons/php.png", name: "PHP" },
+    { src: "assets/images/icons/heidisql.png", name: "HeidiSQL" },
+    { src: "assets/images/icons/laravel.png", name: "Laravel" },
+    { src: "assets/images/icons/react.png", name: "React" },
+    { src: "assets/images/icons/tailwind.png", name: "Tailwind CSS" },
+    { src: "assets/images/icons/swiper.png", name: "Swiper.js" },
+    { src: "assets/images/icons/js.webp", name: "JavaScript" },
+    { src: "assets/images/icons/html.png", name: "HTML5" },
+    { src: "assets/images/icons/css.png", name: "CSS3" },
+    { src: "assets/images/icons/github-logo.png", name: "GitHub" },
+  ];
 
-            {/* Slider de capturas */}
-            <div className="max-w-5xl mx-auto mb-24 px-4 sm:px-0">
+  const sliderImages = ["jint5", "jint1", "jint2", "jint3", "jint4"];
 
-                <Swiper
-                    modules={[Autoplay, Navigation, Pagination]}
-                    spaceBetween={30}
-                    slidesPerView={1}
-                    autoplay={{ delay: 3500 }}
-                    navigation
-                    pagination={{ clickable: true }}
-                    className="rounded-lg shadow-lg"
-                >
-                    {["jint5", "jint1", "jint2", "jint3", "jint4"].map((img, i) => (
-                        <SwiperSlide key={i}>
-                            <img
-                                src={`assets/images/jint/${img}.png`}
-                                alt={`Jint ${img}`}
-                                className="w-full h-[440px] object-cover rounded-lg"
-                            />
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            </div>
+  const openModal = (src) => {
+    setModalImage(src);
+    setModalOpen(true);
+  };
 
-            {/* Contenido descriptivo */}
-            <div className="max-w-4xl mx-auto px-6 text-left text-gray-800">
-                {/* Sobre el proyecto */}
-                <h2 className="text-4xl font-bold mb-10 text-center">Sobre el proyecto</h2>
-                <p className="text-xl mb-20 leading-relaxed text-center max-w-3xl mx-auto">
-                    Jint es una plataforma de gestión de tareas diseñada para optimizar la productividad. 
-                    Su interfaz intuitiva permite a los usuarios organizar proyectos, establecer prioridades 
-                    y mejorar la colaboración en equipo.
-                </p>
+  const closeModal = () => {
+    setModalOpen(false);
+    setModalImage(null);
+  };
 
-                {/* Tecnologías utilizadas */}
-                <h2 className="text-4xl font-bold mb-14 text-center">Tecnologías utilizadas</h2>
-                <div className="flex flex-wrap justify-center gap-16 items-center mb-28">
-                    {technologies.map((tech, index) => (
-                        <div key={index} className="relative group">
-                            <img
-                                src={tech.src}
-                                alt={tech.name}
-                                className="w-16 h-16 transition-transform duration-300 transform group-hover:scale-110 cursor-pointer"
-                            />
-                            <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                                {tech.name}
-                            </span>
-                        </div>
-                    ))}
-                </div>
+  return (
+    <div id="jint" className="w-full py-30 text-center">
+      <h1 className="text-black text-6xl font-bold mb-8">Jint</h1>
+      <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
+        Gestión eficiente de tareas
+      </p>
+      <a
+        href="https://github.com/Ebema260902/Jint"
+        className="inline-block mb-14"
+      >
+        <img
+          className="w-[48px] mx-auto hover:scale-110 transition-transform duration-300 cursor-pointer rounded-full"
+          src="assets/images/icons/github-logo.png"
+          alt="GitHub Logo"
+        />
+      </a>
 
-                {/* Características */}
-                <h2 className="text-4xl font-bold mb-10 text-center">Características principales</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-lg">
-                    {[
-                        "✅ Creación y organización de tareas",
-                        "✅ Interfaz intuitiva y optimizada",
-                        "✅ Priorización y asignación de proyectos",
-                        "✅ Integración con herramientas de productividad"
-                    ].map((feature, i) => (
-                        <div key={i} className="bg-gray-100 p-8 rounded-lg shadow-md">
-                            <p>{feature}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
+      <div className="max-w-5xl mx-auto mb-24 px-4 sm:px-0">
+        <Swiper
+          modules={[Autoplay, Navigation, Pagination]}
+          spaceBetween={30}
+          slidesPerView={1}
+          autoplay={{ delay: 3500 }}
+          navigation
+          pagination={{ clickable: true }}
+          className="rounded-lg shadow-lg"
+        >
+          {sliderImages.map((img, i) => (
+            <SwiperSlide key={i}>
+              <img
+                src={`assets/images/jint/${img}.png`}
+                alt={`Jint ${img}`}
+                className="w-full h-[440px] object-cover rounded-lg cursor-pointer"
+                onClick={() => openModal(`assets/images/jint/${img}.png`)}
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
+
+      {modalOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-pointer"
+          onClick={closeModal}
+        >
+          <img
+            src={modalImage}
+            alt="Imagen ampliada"
+            className="max-w-full max-h-full rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+          <button
+            onClick={closeModal}
+            className="absolute top-5 right-5 text-white bg-black bg-opacity-70 rounded-full p-2 text-3xl font-bold hover:bg-opacity-90"
+            aria-label="Cerrar modal"
+          >
+            &times;
+          </button>
         </div>
-    );
+      )}
+
+      <div className="max-w-4xl mx-auto px-6 text-left text-gray-800">
+        <h2 className="text-4xl font-bold mb-10 text-center">Sobre el proyecto</h2>
+        <p className="text-xl mb-20 leading-relaxed text-center max-w-3xl mx-auto">
+          Jint es una plataforma de gestión de tareas diseñada para optimizar la productividad. Su interfaz intuitiva permite a los usuarios organizar proyectos, establecer prioridades y mejorar la colaboración en equipo.
+        </p>
+
+        <h2 className="text-4xl font-bold mb-14 text-center">Tecnologías utilizadas</h2>
+        <div className="flex flex-wrap justify-center gap-16 items-center mb-28">
+          {technologies.map((tech, index) => (
+            <div key={index} className="relative group">
+              <img
+                src={tech.src}
+                alt={tech.name}
+                className="w-16 h-16 transition-transform duration-300 transform group-hover:scale-110 cursor-pointer"
+              />
+              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                {tech.name}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="text-4xl font-bold mb-10 text-center">Características principales</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-lg">
+          {[
+            "✅ Creación y organización de tareas",
+            "✅ Interfaz intuitiva y optimizada",
+            "✅ Priorización y asignación de proyectos",
+            "✅ Integración con herramientas de productividad",
+          ].map((feature, i) => (
+            <div key={i} className="bg-gray-100 p-8 rounded-lg shadow-md">
+              <p>{feature}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Jint;

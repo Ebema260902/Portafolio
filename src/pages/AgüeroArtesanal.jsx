@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -6,6 +6,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const AgueroArtesanal = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [modalImage, setModalImage] = useState(null);
+
     const technologies = [
         { src: "assets/images/icons/wordpress.png", name: "WordPress" },
         { src: "assets/images/icons/elementor.webp", name: "Elementor" },
@@ -22,8 +25,18 @@ const AgueroArtesanal = () => {
         "assets/images/agueroartesanal/agueroartesanal5.png",
     ];
 
+    const openModal = (src) => {
+        setModalImage(src);
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+        setModalImage(null);
+    };
+
     return (
-        <div id="agueroartesanal" className="w-full py-48 text-center">
+        <div id="agueroartesanal" className="w-full py-30 text-center">
             <h1 className="text-black text-6xl font-bold mb-8">Agüero Artesanal</h1>
             <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
                 Tienda de productos en madera
@@ -52,12 +65,35 @@ const AgueroArtesanal = () => {
                             <img
                                 src={src}
                                 alt={`Agüero Artesanal ${i + 1}`}
-                                className="w-full h-[440px] object-cover rounded-lg"
+                                className="w-full h-[440px] object-cover rounded-lg cursor-pointer"
+                                onClick={() => openModal(src)}
                             />
                         </SwiperSlide>
                     ))}
                 </Swiper>
             </div>
+
+            {/* Modal para imagen ampliada */}
+            {modalOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-pointer"
+                    onClick={closeModal}
+                >
+                    <img
+                        src={modalImage}
+                        alt="Imagen ampliada"
+                        className="max-w-full max-h-full rounded-lg"
+                        onClick={(e) => e.stopPropagation()}
+                    />
+                    <button
+                        onClick={closeModal}
+                        className="absolute top-5 right-5 text-white bg-black bg-opacity-70 rounded-full p-2 text-3xl font-bold hover:bg-opacity-90"
+                        aria-label="Cerrar modal"
+                    >
+                        &times;
+                    </button>
+                </div>
+            )}
 
             <div className="max-w-4xl mx-auto px-6 text-left text-gray-800">
                 <h2 className="text-4xl font-bold mb-10 text-center">Sobre el proyecto</h2>
