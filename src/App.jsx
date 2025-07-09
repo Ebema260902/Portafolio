@@ -9,6 +9,7 @@ import Ticolancer from "./pages/Ticolancer.jsx";
 import Jint from "./pages/Jint.jsx";
 import Kimchis from "./pages/Kimchis.jsx";
 import Contact from "./pages/Contact.jsx";
+import AgueroArtesanal from "./pages/AgüeroArtesanal.jsx"; 
 
 function App() {
   const [count, setCount] = useState(0);
@@ -24,6 +25,7 @@ function App() {
         <Route path="/ticolancer" element={<Ticolancer />} />
         <Route path="/jint" element={<Jint />} />
         <Route path="/kimchis" element={<Kimchis />} />
+        <Route path="/agueroartesanal" element={<AgueroArtesanal />} />
         <Route path="/contact" element={<Contact />} />
 
       </Routes>

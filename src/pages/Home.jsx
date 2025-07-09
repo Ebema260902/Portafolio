@@ -50,7 +50,7 @@ const Home = () => {
 const AboutMe = () => {
     return (
       <div id="about" className="py-20 sm:py-40 text-center bg-white">
-        <div className="py-12 px-4 sm:px-12 md:px-28 mb-20 sm:mb-28 bg-blue-50 bg-opacity-50 border rounded-xl max-w-6xl mx-auto">
+        <div className="py-12 px-4  mb-20 sm:mb-28 bg-blue-50 bg-opacity-50 border rounded-xl max-w-6xl mx-auto">
 
           {/* Heading */}
           <div className="mb-10 text-center">
@@ -61,7 +61,7 @@ const AboutMe = () => {
           </div>
   
           {/* Content */}
-          <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 sm:gap-12 items-center">
+          <div className="max-w-5xl mx-auto grid grid-cols-1 gap-10 sm:gap-12 items-center">
             <div>
               <p className="text-gray-700 text-base sm:text-lg leading-relaxed mb-4">
                 Desarrollador web con enfoque full-stack, apasionado por construir soluciones funcionales y atractivas. 
@@ -73,7 +73,7 @@ const AboutMe = () => {
               </p>
   
               {/* Botones sin modificar */}
-              <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-4">
+              <div className="mt-8 flex flex-wrap justify-center gap-4">
               <a
                   href="#skills"
                   className="bg-blue-300 text-gray-700 hover:bg-gray-300 hover:text-gray-900 px-5 py-3 rounded-lg shadow transition duration-200 flex items-center gap-2"
@@ -105,32 +105,69 @@ const AboutMe = () => {
 
 
 
-const Skills = () => {
+  const Skills = () => {
+    const skills = [
+      // 🟨 Lenguajes de programación
+      { name: "JavaScript", src: "assets/images/icons/js.webp" },
+      { name: "PHP", src: "assets/images/icons/php.png" },
+      { name: "C#", src: "assets/images/icons/csharp.png" },
+  
+      // 🟦 Frameworks y librerías
+      { name: "React", src: "assets/images/icons/react.png" },
+      { name: "Tailwind CSS", src: "assets/images/icons/tailwind.png" },
+      { name: "Bootstrap", src: "assets/images/icons/bootstrap.png" },
+      { name: "ASP.NET", src: "assets/images/icons/aspnet.png" },
+  
+      // 🟪 CMS
+      { name: "WordPress", src: "assets/images/icons/wordpress.png" },
+  
+      // 🟥 Control de versiones
+      { name: "Git", src: "assets/images/icons/git.png" },
+      { name: "GitHub", src: "assets/images/icons/github-logo.png" },
+  
+      // 🟧 Cloud y DevOps
+      { name: "Amazon EC2", src: "assets/images/icons/ec2.png" },
+      { name: "Vercel", src: "assets/images/icons/vercel.svg" },
+      { name: "Pantheon", src: "assets/images/icons/pantheon.webp" },
+  
+      // 🟩 Bases de datos
+      { name: "SQL Server", src: "assets/images/icons/sqlserver.png" },
+      { name: "MySQL", src: "assets/images/icons/mysql.png" },
+  
+      // 🟫 Herramientas de desarrollo
+      { name: "Visual Studio Code", src: "assets/images/icons/visualstudiocode.svg" },
+      { name: "Visual Studio 2022", src: "assets/images/icons/visualstudio2022.png" },
+  
+      // 🟦 Diseño UX/UI
+      { name: "Figma", src: "assets/images/icons/figma.svg" },
+      { name: "Photoshop", src: "assets/images/icons/photoshop.png" },
+      { name: "Illustrator", src: "assets/images/icons/illustrator.png" },
+  
+      // 🟥 Testing
+      { name: "Selenium", src: "assets/images/icons/selenium.png" },
+  ];
+  
     return (
         <div id="skills" className="py-28 px-6 bg-white text-center">
             <h1 className="text-black text-5xl font-bold mb-16">HABILIDADES</h1>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                {[
-                    { title: "Lenguajes", desc: "PHP, JavaScript, C#" },
-                    { title: "Frameworks", desc: "ASP.NET, React, MVC, Bootstrap, TailwindCSS" },
-                    { title: "CMS", desc: "WordPress (temas, creación plugins, personalización)" },
-                    { title: "Cloud & DevOps", desc: "Amazon EC2, Git, GitHub, Pantheon, Vercel" },
-                    { title: "Herramientas de desarrollo", desc: "Visual Studio Code, Visual Studio 2022, NetBeans" },
-                    { title: "Testing & Seguridad", desc: "Selenium, TestCraft, SonarCloud" },
-                    { title: "Bases de datos", desc: "SQL Server, MySQL" },
-                    { title: "Diseño UX/UI", desc: "Figma, Photoshop, Illustrator" },
-                ].map((skill, index) => (
-                    <div key={index} className="p-6 bg-gray-100 rounded-lg shadow-md grid gap-2">
-                        <h3 className="text-xl font-bold text-red-500">{skill.title}</h3>
-                        <p className="text-base text-gray-700">{skill.desc}</p>
+            <div className="flex flex-wrap justify-center gap-16 items-center max-w-6xl mx-auto">
+                {skills.map((skill, index) => (
+                    <div key={index} className="relative group">
+                        <img
+                            src={skill.src}
+                            alt={skill.name}
+                            className="w-16 h-16 transition-transform duration-300 transform group-hover:scale-110 cursor-pointer"
+                        />
+                        <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
+                            {skill.name}
+                        </span>
                     </div>
                 ))}
             </div>
         </div>
-
-    
     );
 };
+
 
 
 const HomePage = () => {

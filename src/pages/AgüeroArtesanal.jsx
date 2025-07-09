@@ -5,36 +5,30 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-const Jint = () => {
+const AgueroArtesanal = () => {
     const technologies = [
-        { src: "assets/images/icons/php.png", name: "PHP" },
-        { src: "assets/images/icons/heidisql.png", name: "HeidiSQL" },
-        { src: "assets/images/icons/laravel.png", name: "Laravel" },
-        { src: "assets/images/icons/react.png", name: "React" },
-        { src: "assets/images/icons/tailwind.png", name: "Tailwind CSS" },
-        { src: "assets/images/icons/swiper.png", name: "Swiper.js" },
-        { src: "assets/images/icons/js.webp", name: "JavaScript" },
-        { src: "assets/images/icons/html.png", name: "HTML5" },
-        { src: "assets/images/icons/css.png", name: "CSS3" },
+        { src: "assets/images/icons/wordpress.png", name: "WordPress" },
+        { src: "assets/images/icons/elementor.webp", name: "Elementor" },
+        { src: "assets/images/icons/gutenberg.webp", name: "Gutenberg" },
         { src: "assets/images/icons/github-logo.png", name: "GitHub" },
     ];
 
     return (
-        <div id="jint" className="w-full py-48 text-center">
+        <div id="agueroartesanal" className="w-full py-48 text-center">
             {/* Título principal */}
-            <h1 className="text-black text-6xl font-bold mb-8">Jint</h1>
+            <h1 className="text-black text-6xl font-bold mb-8">Agüero Artesanal</h1>
             <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
-                Gestión eficiente de tareas
+                Tienda de productos en madera
             </p>
             <a href="https://github.com/Ebema260902/Jint" className="inline-block mb-14">
-                <img 
-                    className="w-[48px] mx-auto hover:scale-110 transition-transform duration-300 cursor-pointer rounded-full"  
-                    src="assets/images/icons/github-logo.png" 
+                <img
+                    className="w-[48px] mx-auto hover:scale-110 hover:border transition-transform duration-300 cursor-pointer rounded-full"
+                    src="assets/images/icons/github-logo.png"
                     alt="GitHub Logo"
                 />
             </a>
 
-            {/* Slider de capturas */}
+            {/* Slider */}
             <div className="max-w-5xl mx-auto mb-24">
                 <Swiper
                     modules={[Autoplay, Navigation, Pagination]}
@@ -45,11 +39,11 @@ const Jint = () => {
                     pagination={{ clickable: true }}
                     className="rounded-lg shadow-lg"
                 >
-                    {["jint5", "jint1", "jint2", "jint3", "jint4"].map((img, i) => (
+                    {[...Array(5)].map((_, i) => (
                         <SwiperSlide key={i}>
                             <img
-                                src={`assets/images/jint/${img}.png`}
-                                alt={`Jint ${img}`}
+                                src="assets/images/agueroartesanal/agueroartesanal.png"
+                                alt="Agüero Artesanal"
                                 className="w-full h-[440px] object-cover rounded-lg"
                             />
                         </SwiperSlide>
@@ -62,9 +56,9 @@ const Jint = () => {
                 {/* Sobre el proyecto */}
                 <h2 className="text-4xl font-bold mb-10 text-center">Sobre el proyecto</h2>
                 <p className="text-xl mb-20 leading-relaxed text-center max-w-3xl mx-auto">
-                    Jint es una plataforma de gestión de tareas diseñada para optimizar la productividad. 
-                    Su interfaz intuitiva permite a los usuarios organizar proyectos, establecer prioridades 
-                    y mejorar la colaboración en equipo.
+                    Agüero Artesanal es una tienda en línea dedicada a la creación y venta de productos en madera hechos a mano.
+                    Con un enfoque en la calidad y el diseño, ofrecemos artículos únicos como mesas pequeñas, estantes, cuadros tallados y más.
+                    Nuestra plataforma permite a los clientes explorar nuestro catálogo, realizar pedidos personalizados y contactar directamente para cotizaciones, todo de forma fácil y accesible.
                 </p>
 
                 {/* Tecnologías utilizadas */}
@@ -84,14 +78,14 @@ const Jint = () => {
                     ))}
                 </div>
 
-                {/* Características */}
+                {/* Características principales */}
                 <h2 className="text-4xl font-bold mb-10 text-center">Características principales</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-lg">
                     {[
-                        "✅ Creación y organización de tareas",
-                        "✅ Interfaz intuitiva y optimizada",
-                        "✅ Priorización y asignación de proyectos",
-                        "✅ Integración con herramientas de productividad"
+                        "✅ Catálogo dinámico de productos con filtros por categoría",
+                        "✅ Integración con WhatsApp para contacto rápido y pedidos",
+                        "✅ Sitio responsivo optimizado para dispositivos móviles",
+                        "✅ Construido con WordPress + plugins personalizados"
                     ].map((feature, i) => (
                         <div key={i} className="bg-gray-100 p-8 rounded-lg shadow-md">
                             <p>{feature}</p>
@@ -103,4 +97,4 @@ const Jint = () => {
     );
 };
 
-export default Jint;
+export default AgueroArtesanal;
