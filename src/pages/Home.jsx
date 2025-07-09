@@ -16,7 +16,8 @@ const GradientShapes = () => {
 
 const Home = () => {
     return (
-        <div className="scroll-smooth flex items-center justify-center">
+        <div className="scroll-smooth flex items-center justify-center overflow-x-hidden sm:overflow-x-visible relative">
+
             <GradientShapes />
             <main className="relative z-10 text-center px-6 py-12 max-w-3xl mx-auto flex flex-col justify-center min-h-[80vh] mt-[55px] max-sm:mt-0 mb-[200px]">
                 <h1 className="text-4xl md:text-5xl font-light mb-4 tracking-wide text-gray-800">
@@ -49,7 +50,7 @@ const Home = () => {
 
 const AboutMe = () => {
     return (
-      <div id="about" className="py-20 sm:py-40 px-4 sm:px-0 text-center bg-white">
+      <div id="about" className="py-20 sm:py-40 px-4 sm:px-0 text-center">
   <div className="py-12 sm:px-12 mb-20 sm:mb-28 bg-blue-50 bg-opacity-50 border rounded-xl max-w-6xl mx-auto w-full">
 
           {/* Heading */}
@@ -148,8 +149,8 @@ const AboutMe = () => {
   ];
   
     return (
-        <div id="skills" className="py-28 px-6 bg-white text-center">
-            <h1 className="text-black text-5xl font-bold mb-16">HABILIDADES</h1>
+        <div id="skills" className=" pb-40 px-6 bg-white text-center">
+            <h1 className="text-black text-5xl font-bold mb-16">Herramientas y tecnologías</h1>
             <div className="flex flex-wrap justify-center gap-16 items-center max-w-6xl mx-auto">
                 {skills.map((skill, index) => (
                     <div key={index} className="relative group">
