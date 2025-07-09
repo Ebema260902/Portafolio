@@ -49,8 +49,8 @@ const Home = () => {
 
 const AboutMe = () => {
     return (
-      <div id="about" className="py-20 sm:py-40 text-center bg-white">
-        <div className="py-12 px-4  mb-20 sm:mb-28 bg-blue-50 bg-opacity-50 border rounded-xl max-w-6xl mx-auto">
+      <div id="about" className="py-20 sm:py-40 px-4 sm:px-0 text-center bg-white">
+  <div className="py-12 sm:px-12 mb-20 sm:mb-28 bg-blue-50 bg-opacity-50 border rounded-xl max-w-6xl mx-auto w-full">
 
           {/* Heading */}
           <div className="mb-10 text-center">
