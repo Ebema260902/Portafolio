@@ -50,8 +50,8 @@ const Projects = () => {
                     <img src="assets/images/agueroartesanal/agueroartesanal.png" alt="Agüero Artesanal" 
                          className="w-full h-[250px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div className="absolute inset-0 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="text-white text-center bg-blue-800 rounded-full p-4 w-40">
-                            <h3 className="text-xl font-bold birder">Ag. Artesanal</h3>
+                        <div className="text-white text-center bg-blue-800 rounded-full p-4 w-auto">
+                            <h3 className="text-xl font-bold birder">Agüero Artesanal</h3>
                         </div>
                     </div>
                 </Link>

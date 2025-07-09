@@ -79,7 +79,7 @@ const AboutMe = () => {
                   href="#skills"
                   className="bg-blue-300 text-gray-700 hover:bg-gray-300 hover:text-gray-900 px-5 py-3 rounded-lg shadow transition duration-200 flex items-center gap-2"
                 >
-                  Mis habilidades
+                  → Herramientas y tecnologías
                 </a>
                 {/* <a
                   href="/projects"
@@ -91,7 +91,7 @@ const AboutMe = () => {
                   href="/contact"
                   className="bg-blue-300 text-gray-700 hover:bg-gray-300 hover:text-gray-900 px-5 py-3 rounded-lg shadow transition duration-200 flex items-center gap-2"
                 >
-                  Contáctame
+                  → Contáctame
                 </a>
               </div>
             </div>
@@ -165,9 +165,33 @@ const AboutMe = () => {
                     </div>
                 ))}
             </div>
+
+
+            {/* Animación */}
+            <div className=" mt-40 flex justify-center">
+              <img
+                src="assets/images/icons/gear.png"
+                alt="Decoración"
+                className="w-12 h-12 opacity-60 animate-spin-slow"
+              />
+            </div>
+
+            
+
+
         </div>
+
+        
     );
+
+
+
+    
 };
+
+
+
+
 
 
 

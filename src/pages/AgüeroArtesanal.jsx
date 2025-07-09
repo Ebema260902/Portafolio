@@ -15,15 +15,14 @@ const AgueroArtesanal = () => {
 
     return (
         <div id="agueroartesanal" className="w-full py-48 text-center">
-            {/* Título principal */}
             <h1 className="text-black text-6xl font-bold mb-8">Agüero Artesanal</h1>
             <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
                 Tienda de productos en madera
             </p>
-            <a href="https://github.com/Ebema260902/Jint" className="inline-block mb-14">
+            <a href="https://dev-aguero-artesanal.pantheonsite.io/" className="inline-block mb-14">
                 <img
-                    className="w-[48px] mx-auto hover:scale-110 hover:border transition-transform duration-300 cursor-pointer rounded-full"
-                    src="assets/images/icons/github-logo.png"
+                    className="w-[48px] mx-auto hover:scale-110 border transition-transform duration-300 cursor-pointer rounded-full"
+                    src="assets/images/icons/view.png"
                     alt="GitHub Logo"
                 />
             </a>
