@@ -13,6 +13,15 @@ const AgueroArtesanal = () => {
         { src: "assets/images/icons/github-logo.png", name: "GitHub" },
     ];
 
+    // Array con las rutas de las imágenes para el slider
+    const sliderImages = [
+        "assets/images/agueroartesanal/agueroartesanal.png",
+        "assets/images/agueroartesanal/agueroartesanal2.png",
+        "assets/images/agueroartesanal/agueroartesanal3.png",
+        "assets/images/agueroartesanal/agueroartesanal4.png",
+        "assets/images/agueroartesanal/agueroartesanal5.png",
+    ];
+
     return (
         <div id="agueroartesanal" className="w-full py-48 text-center">
             <h1 className="text-black text-6xl font-bold mb-8">Agüero Artesanal</h1>
@@ -28,7 +37,7 @@ const AgueroArtesanal = () => {
             </a>
 
             {/* Slider */}
-            <div className="max-w-5xl mx-auto mb-24">
+            <div className="max-w-5xl mx-auto mb-24 px-4 sm:px-0">
                 <Swiper
                     modules={[Autoplay, Navigation, Pagination]}
                     spaceBetween={30}
@@ -38,11 +47,11 @@ const AgueroArtesanal = () => {
                     pagination={{ clickable: true }}
                     className="rounded-lg shadow-lg"
                 >
-                    {[...Array(5)].map((_, i) => (
+                    {sliderImages.map((src, i) => (
                         <SwiperSlide key={i}>
                             <img
-                                src="assets/images/agueroartesanal/agueroartesanal.png"
-                                alt="Agüero Artesanal"
+                                src={src}
+                                alt={`Agüero Artesanal ${i + 1}`}
                                 className="w-full h-[440px] object-cover rounded-lg"
                             />
                         </SwiperSlide>
@@ -50,9 +59,7 @@ const AgueroArtesanal = () => {
                 </Swiper>
             </div>
 
-            {/* Contenido descriptivo */}
             <div className="max-w-4xl mx-auto px-6 text-left text-gray-800">
-                {/* Sobre el proyecto */}
                 <h2 className="text-4xl font-bold mb-10 text-center">Sobre el proyecto</h2>
                 <p className="text-xl mb-20 leading-relaxed text-center max-w-3xl mx-auto">
                     Agüero Artesanal es una tienda en línea dedicada a la creación y venta de productos en madera hechos a mano.
@@ -60,7 +67,6 @@ const AgueroArtesanal = () => {
                     Nuestra plataforma permite a los clientes explorar nuestro catálogo, realizar pedidos personalizados y contactar directamente para cotizaciones, todo de forma fácil y accesible.
                 </p>
 
-                {/* Tecnologías utilizadas */}
                 <h2 className="text-4xl font-bold mb-14 text-center">Tecnologías utilizadas</h2>
                 <div className="flex flex-wrap justify-center gap-16 items-center mb-28">
                     {technologies.map((tech, index) => (
@@ -84,7 +90,7 @@ const AgueroArtesanal = () => {
                         "✅ Catálogo dinámico de productos con filtros por categoría",
                         "✅ Integración con WhatsApp para contacto rápido y pedidos",
                         "✅ Sitio responsivo optimizado para dispositivos móviles",
-                        "✅ Construido con WordPress + plugins personalizados"
+                        "✅ Construido con WordPress + plugins personalizados",
                     ].map((feature, i) => (
                         <div key={i} className="bg-gray-100 p-8 rounded-lg shadow-md">
                             <p>{feature}</p>

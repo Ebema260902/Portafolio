@@ -34,7 +34,7 @@ const Ticolancer = () => {
             </a>
 
             {/* Slider */}
-            <div className="max-w-5xl mx-auto mb-24">
+            <div className="max-w-5xl mx-auto mb-24 px-4 sm:px-0">
                 <Swiper
                     modules={[Autoplay, Navigation, Pagination]}
                     spaceBetween={30}
