@@ -22,6 +22,17 @@ const Projects = () => {
                     </div>
                 </Link>
 
+                {/* Proyecto 4 */}
+                <Link to="/agueroartesanal" className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border border-gray-300">
+                    <img src="assets/images/agueroartesanal/agueroartesanal.png" alt="Agüero Artesanal" 
+                         className="w-full h-[250px] object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <div className="absolute inset-0 transition-opacity duration-300 flex items-center justify-center">
+                        <div className="text-white text-center bg-blue-800 rounded-full p-4 w-auto">
+                            <h3 className="text-xl font-bold birder">Agüero Artesanal</h3>
+                        </div>
+                    </div>
+                </Link>
+
 
                 {/* Proyecto 2 */}
                 <Link to="/Jint" className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border border-gray-300">
@@ -45,16 +56,7 @@ const Projects = () => {
                     </div>
                 </Link>
 
-                {/* Proyecto 4 */}
-                <Link to="/agueroartesanal" className="group relative overflow-hidden rounded-lg shadow-lg cursor-pointer bg-white border border-gray-300">
-                    <img src="assets/images/agueroartesanal/agueroartesanal.png" alt="Agüero Artesanal" 
-                         className="w-full h-[250px] object-cover transition-transform duration-300 group-hover:scale-105" />
-                    <div className="absolute inset-0 transition-opacity duration-300 flex items-center justify-center">
-                        <div className="text-white text-center bg-blue-800 rounded-full p-4 w-auto">
-                            <h3 className="text-xl font-bold birder">Agüero Artesanal</h3>
-                        </div>
-                    </div>
-                </Link>
+                
 
             </div>
         </div>
