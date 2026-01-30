@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
+import { useTheme } from "../contexts/ThemeContext.jsx";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -8,6 +9,7 @@ import "swiper/css/pagination";
 const Jint = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalImage, setModalImage] = useState(null);
+  const { theme } = useTheme();
 
   const technologies = [
     { src: "assets/images/icons/php.png", name: "PHP" },
@@ -35,43 +37,296 @@ const Jint = () => {
   };
 
   return (
-    <div id="jint" className="w-full py-30 text-center">
-      <h1 className="text-black text-6xl font-bold mb-8">Jint</h1>
-      <p className="text-gray-600 text-2xl mb-14 max-w-xl mx-auto">
-        Gestión eficiente de tareas
-      </p>
-      <a
-        href="https://github.com/Ebema260902/Jint"
-        className="inline-block mb-14"
-      >
-        <img
-          className="w-[48px] mx-auto hover:scale-110 transition-transform duration-300 cursor-pointer rounded-full"
-          src="assets/images/icons/github-logo.png"
-          alt="GitHub Logo"
-        />
-      </a>
+    <main id="main-content" className={`w-full transition-colors pt-24 ${
+        theme === "light" ? "bg-white" : "bg-[#0d1117]"
+    }`} role="main" aria-label="Detalles del proyecto Jint">
+      {/* Header estilo GitHub */}
+      <div className={`border-b ${
+          theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#161b22]"
+      }`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center gap-3">
+              <svg className={`w-5 h-5 ${theme === "light" ? "text-gray-500" : "text-[#8b949e]"}`} fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
+              </svg>
+              <a 
+                href="https://github.com/Ebema260902" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`text-sm hover:underline ${
+                    theme === "light" ? "text-gray-600 hover:text-blue-600" : "text-[#58a6ff] hover:text-[#79c0ff]"
+                }`}
+                aria-label="Visitar perfil de GitHub Ebema260902 (se abre en nueva ventana)"
+              >
+                Ebema260902
+              </a>
+              <span className={`${theme === "light" ? "text-gray-400" : "text-[#6e7681]"}`}>/</span>
+              <h1 className={`text-xl font-semibold ${
+                  theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
+              }`}>Jint</h1>
+            </div>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://github.com/Ebema260902/Jint"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`px-4 py-1.5 text-sm font-medium rounded-md border transition-colors ${
+                    theme === "light"
+                        ? "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
+                        : "bg-[#21262d] border-[#30363d] text-[#c9d1d9] hover:bg-[#30363d]"
+                }`}
+                aria-label="Ver repositorio de Jint en GitHub (se abre en nueva ventana)"
+              >
+                <svg className="w-4 h-4 inline mr-1.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                  <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+                Ver repositorio de Jint en GitHub
+              </a>
+            </div>
+          </div>
+          <p className={`text-sm mb-4 ${
+              theme === "light" ? "text-gray-600" : "text-[#8b949e]"
+          }`}>
+            Sistema de gestión de tareas diseñado para optimizar la productividad
+          </p>
+          <div className="flex items-center gap-4 text-sm">
+            <span className={`flex items-center gap-1.5 ${theme === "light" ? "text-gray-600" : "text-[#8b949e]"}`}>
+              <span className={`inline-block w-3 h-3 rounded-full ${theme === "light" ? "bg-green-500" : "bg-[#238636]"}`} aria-hidden="true"></span>
+              <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
+              </svg>
+              <span>Public</span>
+            </span>
+            <a 
+              href="https://github.com/Ebema260902/Jint" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`hover:underline ${
+                  theme === "light" ? "text-gray-600 hover:text-blue-600" : "text-[#58a6ff] hover:text-[#79c0ff]"
+              }`}
+              aria-label="Ver repositorio de Jint en GitHub (se abre en nueva ventana)"
+            >
+              <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+              React
+            </a>
+            <span className={`${theme === "light" ? "text-gray-600" : "text-[#8b949e]"}`}>
+              <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
+              </svg>
+              Updated 2 months ago
+            </span>
+          </div>
+        </div>
+      </div>
 
-      <div className="max-w-5xl mx-auto mb-24 px-4 sm:px-0">
-        <Swiper
-          modules={[Autoplay, Navigation, Pagination]}
-          spaceBetween={30}
-          slidesPerView={1}
-          autoplay={{ delay: 3500 }}
-          navigation
-          pagination={{ clickable: true }}
-          className="rounded-lg shadow-lg"
-        >
-          {sliderImages.map((img, i) => (
-            <SwiperSlide key={i}>
-              <img
-                src={`assets/images/jint/${img}.png`}
-                alt={`Jint ${img}`}
-                className="w-full h-[440px] object-cover rounded-lg cursor-pointer"
-                onClick={() => openModal(`assets/images/jint/${img}.png`)}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+      {/* Contenido principal estilo GitHub README */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          {/* Contenido principal (README) */}
+          <div className="lg:col-span-8">
+            {/* Galería de imágenes */}
+            <div className={`rounded-lg border mb-6 overflow-hidden ${
+                theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#0d1117]"
+            }`}>
+              <div className={`p-4 border-b ${
+                  theme === "light" ? "border-gray-200" : "border-[#30363d]"
+              }`}>
+                <h2 className={`text-lg font-semibold ${
+                    theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
+                }`}>
+                  📸 Screenshots
+                </h2>
+              </div>
+              <div className="p-4">
+                <Swiper
+                  modules={[Autoplay, Navigation, Pagination]}
+                  spaceBetween={20}
+                  slidesPerView={1}
+                  autoplay={{ delay: 3500 }}
+                  navigation
+                  pagination={{ clickable: true }}
+                  className="rounded-lg"
+                >
+                  {sliderImages.map((img, i) => (
+                    <SwiperSlide key={i}>
+                      <img
+                        src={`assets/images/jint/${img}.png`}
+                        alt={`Jint ${img}`}
+                        className={`w-full h-auto rounded-lg cursor-pointer border ${
+                            theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                        }`}
+                        onClick={() =>
+                          openModal(`assets/images/jint/${img}.png`)
+                        }
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            </div>
+
+            {/* Contenido del proyecto */}
+            <article className={`rounded-lg border ${
+                theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#0d1117]"
+            }`}>
+              <div className={`px-6 py-4 markdown-body ${
+                  theme === "light" ? "text-gray-800" : "text-[#c9d1d9]"
+              }`}>
+                <h1 className={`text-3xl font-bold mb-4 pb-4 border-b ${
+                    theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                }`}>
+                  <a 
+                    href="https://github.com/Ebema260902/Jint" 
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`hover:underline ${
+                        theme === "light" ? "text-gray-900" : "text-[#58a6ff]"
+                    }`}
+                    aria-label="Ver repositorio de Jint en GitHub (se abre en nueva ventana)"
+                  >Jint</a>
+                </h1>
+                <p className={`text-lg mb-6 ${
+                    theme === "light" ? "text-gray-600" : "text-[#8b949e]"
+                }`}>
+                  Sistema de gestión de tareas diseñado para optimizar la productividad. Permite organizar proyectos, establecer prioridades y mejorar la colaboración en equipo.
+                </p>
+
+                <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
+                    theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                }`}>✨ Características</h2>
+                <ul className={`list-disc pl-6 mb-6 space-y-2 ${
+                    theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
+                }`}>
+                  <li>Creación y organización de tareas</li>
+                  <li>Interfaz intuitiva y optimizada</li>
+                  <li>Priorización y asignación de proyectos</li>
+                  <li>Integración con herramientas de productividad</li>
+                </ul>
+
+                <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
+                    theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                }`}>🛠️ Tecnologías</h2>
+                <div className="flex flex-wrap gap-3 mb-6">
+                  {technologies.map((tech, index) => (
+                    <span key={index} className={`px-3 py-1 rounded-md text-sm border ${
+                        theme === "light"
+                            ? "bg-gray-50 border-gray-300 text-gray-700"
+                            : "bg-[#161b22] border-[#30363d] text-[#c9d1d9]"
+                    }`}>
+                      {tech.name}
+                    </span>
+                  ))}
+                </div>
+
+                <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
+                    theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                }`}>📋 Metodología</h2>
+                <p className={`mb-4 ${
+                    theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
+                }`}>
+                  Desarrollo basado en metodología ágil con énfasis en iteraciones rápidas y feedback continuo. 
+                  Se aplicaron técnicas de diseño de experiencia de usuario (UX) para crear una interfaz intuitiva.
+                </p>
+                <ul className={`list-disc pl-6 mb-6 space-y-2 ${
+                    theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
+                }`}>
+                  <li>Metodología Scrum con sprints de 2 semanas</li>
+                  <li>Diseño de componentes reutilizables con React</li>
+                  <li>Arquitectura de API REST para comunicación asíncrona</li>
+                  <li>Implementación de estado global con Context API</li>
+                </ul>
+
+                <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
+                    theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                }`}>👤 Mi Rol</h2>
+                <p className={`mb-4 ${
+                    theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
+                }`}>
+                  Desarrollé el proyecto de manera independiente, asumiendo roles de diseñador UX/UI, 
+                  desarrollador frontend y backend, y gestor de proyecto.
+                </p>
+
+                <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
+                    theme === "light" ? "border-gray-200" : "border-[#30363d]"
+                }`}>📊 Resultados</h2>
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  {[
+                    { label: "Componentes", value: "20+" },
+                    { label: "Tiempo", value: "2 meses" },
+                    { label: "Tecnologías", value: "10+" },
+                    { label: "Funcionalidades", value: "8" },
+                  ].map((result, i) => (
+                    <div key={i} className={`p-4 rounded-md border ${
+                        theme === "light"
+                            ? "bg-gray-50 border-gray-200"
+                            : "bg-[#161b22] border-[#30363d]"
+                    }`}>
+                      <div className={`text-sm ${
+                          theme === "light" ? "text-gray-600" : "text-[#8b949e]"
+                      }`}>{result.label}</div>
+                      <div className={`text-2xl font-bold ${
+                          theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
+                      }`}>{result.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </article>
+          </div>
+
+          {/* Sidebar estilo GitHub */}
+          <div className="lg:col-span-4">
+            <div className={`rounded-lg border mb-4 ${
+                theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#161b22]"
+            }`}>
+              <div className={`p-4 border-b ${
+                  theme === "light" ? "border-gray-200" : "border-[#30363d]"
+              }`}>
+                <h3 className={`text-sm font-semibold ${
+                    theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
+                }`}>About</h3>
+              </div>
+              <div className="p-4">
+                <p className={`text-sm mb-4 leading-relaxed ${
+                    theme === "light" ? "text-gray-600" : "text-[#8b949e]"
+                }`}>
+                  Jint es una aplicación web moderna de gestión de tareas desarrollada con React y Laravel. La plataforma permite a los usuarios crear, organizar y priorizar tareas de manera eficiente, con una interfaz intuitiva que facilita la productividad personal y en equipo. Incluye funcionalidades avanzadas como drag-and-drop para reorganización de tareas, sistema de prioridades visuales, múltiples vistas (lista, kanban, calendario), filtros avanzados y notificaciones. Desarrollada siguiendo metodología ágil con sprints de 2 semanas, utiliza componentes React reutilizables, API REST para comunicación asíncrona, y Context API para gestión de estado global. La aplicación está completamente funcional y optimizada para dispositivos móviles.
+                </p>
+                <div className="space-y-3">
+                  <div>
+                    <a 
+                      href="https://github.com/Ebema260902/Jint" 
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`text-sm hover:underline ${
+                          theme === "light" ? "text-blue-600" : "text-[#58a6ff]"
+                      }`}
+                      aria-label="Ver repositorio de Jint en GitHub (se abre en nueva ventana)"
+                    >
+                      <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                      Ver repositorio de Jint en GitHub
+                    </a>
+                  </div>
+                  <div>
+                    <span className={`text-sm ${
+                        theme === "light" ? "text-gray-600" : "text-[#8b949e]"
+                    }`}>
+                      <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                      </svg>
+                      React
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {modalOpen && (
@@ -94,44 +349,7 @@ const Jint = () => {
           </button>
         </div>
       )}
-
-      <div className="max-w-4xl mx-auto px-6 text-left text-gray-800">
-        <h2 className="text-4xl font-bold mb-10 text-center">Sobre el proyecto</h2>
-        <p className="text-xl mb-20 leading-relaxed text-center max-w-3xl mx-auto">
-          Jint es una plataforma de gestión de tareas diseñada para optimizar la productividad. Su interfaz intuitiva permite a los usuarios organizar proyectos, establecer prioridades y mejorar la colaboración en equipo.
-        </p>
-
-        <h2 className="text-4xl font-bold mb-14 text-center">Tecnologías utilizadas</h2>
-        <div className="flex flex-wrap justify-center gap-16 items-center mb-28">
-          {technologies.map((tech, index) => (
-            <div key={index} className="relative group">
-              <img
-                src={tech.src}
-                alt={tech.name}
-                className="w-16 h-16 transition-transform duration-300 transform group-hover:scale-110 cursor-pointer"
-              />
-              <span className="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-black text-white text-sm px-3 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap">
-                {tech.name}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        <h2 className="text-4xl font-bold mb-10 text-center">Características principales</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 text-lg">
-          {[
-            "✅ Creación y organización de tareas",
-            "✅ Interfaz intuitiva y optimizada",
-            "✅ Priorización y asignación de proyectos",
-            "✅ Integración con herramientas de productividad",
-          ].map((feature, i) => (
-            <div key={i} className="bg-gray-100 p-8 rounded-lg shadow-md">
-              <p>{feature}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    </main>
   );
 };
 

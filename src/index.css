@@ -1,8 +1,66 @@
 @import "tailwindcss";
 
+/* Accesibilidad: Estilos para screen readers */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
 
+.sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
 
+/* Mejorar contraste y legibilidad */
+/* Modo oscuro (por defecto) */
+body {
+    background-color: #000000;
+    color: #e5e7eb;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+/* Modo claro */
+[data-theme="light"] body,
+[data-theme="light"] {
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+[data-theme="light"] body {
+    background-color: #f9fafb;
+    color: #111827;
+}
+
+/* Focus visible para navegación por teclado */
+*:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+}
+
+/* Prevenir animaciones para usuarios que prefieren movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
 
 @keyframes float {
     0% { transform: translate(0, 0) rotate(0deg); }
@@ -18,47 +76,49 @@
     filter: blur(40px);
     animation: float 15s infinite ease-in-out;
     z-index: -1;
+    opacity: 0.1;
 }
 
-/* Green */
+/* Blue gradient subtle */
 .shape1 {
     top: -50px;
     left: -50px;
-    background: linear-gradient(45deg, #dbe0dd, #e2f5ff);
+    background: linear-gradient(45deg, #1e3a8a, #3b82f6);
     animation-delay: -2s;
 }
 
-/* Purple */
 .shape2 {
     top: 50%;
     left: 10%;
-    background: linear-gradient(45deg, #a8c0ff, #d5d3e1);
+    background: linear-gradient(45deg, #1e40af, #60a5fa);
     animation-delay: -1s;
     filter: blur(40px);
 }
 
-/* Pink */
 .shape3 {
     top: -100px;
     right: 20%;
-    background: linear-gradient(45deg, #90beff, #e2dcdc);
+    background: linear-gradient(45deg, #3b82f6, #93c5fd);
     animation-delay: -3s;
     filter: blur(40px);
-    opacity: 0.2;
 }
     
-/* Green 2 */
 .shape4 {
     bottom: -100px;
     left: 90rem;
-    background: linear-gradient(45deg, #84fab0, #ffd1ff);
+    background: linear-gradient(45deg, #2563eb, #60a5fa);
     animation-delay: -4s;
 }
+
 html {
     scroll-behavior: smooth;
+    background-color: #000000;
+    transition: background-color 0.3s ease;
 }
 
-
+[data-theme="light"] html {
+    background-color: #f9fafb;
+}
 
 
 
@@ -75,4 +135,56 @@ html {
   .animate-spin-slow {
     animation: spin-slow 10s linear infinite;
   }
-  
+
+/* Animaciones para el loader de Home */
+@keyframes spin-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-loader-reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes pulse-delay {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.animate-spin-loader {
+  animation: spin-loader 1s linear infinite;
+}
+
+.animate-spin-loader-reverse {
+  animation: spin-loader-reverse 1.5s linear infinite;
+}
+
+.animate-pulse-delay-1 {
+  animation: pulse-delay 1.2s ease-in-out infinite;
+  animation-delay: 0s;
+}
+
+.animate-pulse-delay-2 {
+  animation: pulse-delay 1.2s ease-in-out infinite;
+  animation-delay: 0.4s;
+}
+
+.animate-pulse-delay-3 {
+  animation: pulse-delay 1.2s ease-in-out infinite;
+  animation-delay: 0.8s;
+}

@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { useState } from "react";
-// import "./App.css";
+import { ThemeProvider } from "./contexts/ThemeContext.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Footer from "./components/Footer.jsx";
 import Home from "./pages/Home.jsx";
@@ -12,25 +11,24 @@ import Contact from "./pages/Contact.jsx";
 import AgueroArtesanal from "./pages/AgüeroArtesanal.jsx"; 
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <Router>
-      <div className="w-full flex justify-center">
-        <Navbar />
-    </div>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/ticolancer" element={<Ticolancer />} />
-        <Route path="/jint" element={<Jint />} />
-        <Route path="/kimchis" element={<Kimchis />} />
-        <Route path="/agueroartesanal" element={<AgueroArtesanal />} />
-        <Route path="/contact" element={<Contact />} />
-
-      </Routes>
-      <Footer />
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className="w-full flex justify-center">
+          <Navbar />
+        </div>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/ticolancer" element={<Ticolancer />} />
+          <Route path="/jint" element={<Jint />} />
+          <Route path="/kimchis" element={<Kimchis />} />
+          <Route path="/agueroartesanal" element={<AgueroArtesanal />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+        <Footer />
+      </Router>
+    </ThemeProvider>
   );
 }
 
