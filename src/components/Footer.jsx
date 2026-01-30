@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext.jsx";
+import { useLanguage } from "../contexts/LanguageContext.jsx";
+import { translations } from "../translations/translations.js";
 import { FaEnvelope, FaLinkedin, FaGithub, FaWhatsapp, FaMapMarkerAlt, FaHome, FaProjectDiagram, FaAddressCard } from "react-icons/fa";
 
 const Footer = () => {
   const { theme } = useTheme();
+  const { language } = useLanguage();
+  const t = translations[language];
   
   return (
     <footer className={`border-t transition-colors ${
@@ -17,12 +21,13 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className={`text-lg font-bold mb-4 ${
                 theme === "light" ? "text-gray-900" : "text-white"
-            }`}>Mi Portafolio</h3>
-            <p className={`text-sm leading-relaxed ${
+            }`}>{language === "es" ? "Mi Portafolio" : "My Portfolio"}</h3>
+            <p className={`text-base leading-relaxed ${
                 theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
             }`}>
-              Desarrollador web full-stack, diseñador UX/UI y profesional en experiencia de usuario. 
-              Comparto proyectos y experiencias en desarrollo web, diseño multimedia y tecnología.
+              {language === "es" 
+                ? "Desarrollador web full-stack, diseñador UX/UI y profesional en experiencia de usuario. Comparto proyectos y experiencias en desarrollo web, diseño multimedia y tecnología."
+                : "Full-stack web developer, UX/UI designer and user experience professional. I share projects and experiences in web development, multimedia design and technology."}
             </p>
           </div>
 
@@ -30,26 +35,26 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className={`text-lg font-bold mb-4 ${
                 theme === "light" ? "text-gray-900" : "text-white"
-            }`}>Navegación</h3>
+            }`}>{language === "es" ? "Navegación" : "Navigation"}</h3>
             <ul className="space-y-2">
               {[
-                { label: "Inicio", path: "/", icon: FaHome, ariaLabel: "Ir a la página de inicio" },
-                { label: "Proyectos", path: "/projects", icon: FaProjectDiagram, ariaLabel: "Ir a la página de proyectos" },
-                { label: "Contacto", path: "/contact", icon: FaAddressCard, ariaLabel: "Ir a la página de contacto" },
+                { label: t.nav.home, path: "/", icon: FaHome, ariaLabel: language === "es" ? "Ir a la página de inicio" : "Go to home page" },
+                { label: t.nav.projects, path: "/projects", icon: FaProjectDiagram, ariaLabel: language === "es" ? "Ir a la página de proyectos" : "Go to projects page" },
+                { label: t.nav.contact, path: "/contact", icon: FaAddressCard, ariaLabel: language === "es" ? "Ir a la página de contacto" : "Go to contact page" },
               ].map((link) => {
                 const Icon = link.icon;
                 return (
                   <li key={link.path}>
                     <Link
                       to={link.path}
-                      className={`flex items-center gap-2 text-sm transition-colors ${
+                      className={`inline-flex items-center gap-2 min-h-[44px] min-w-[44px] text-base transition-all focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded-lg px-2 py-1 ${
                           theme === "light"
-                              ? "text-gray-600 hover:text-[#3b82f6]"
-                              : "text-[#9ca3af] hover:text-[#60a5fa]"
+                              ? "text-gray-600 hover:text-[#3b82f6] hover:bg-gray-50 focus:ring-offset-white"
+                              : "text-[#9ca3af] hover:text-[#60a5fa] hover:bg-gray-800/50 focus:ring-offset-black"
                       }`}
                       aria-label={link.ariaLabel}
                     >
-                      <Icon className="text-xs" aria-hidden="true" />
+                      <Icon className="text-sm" aria-hidden="true" />
                       <span>{link.label}</span>
                     </Link>
                   </li>
@@ -62,27 +67,27 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className={`text-lg font-bold mb-4 ${
                 theme === "light" ? "text-gray-900" : "text-white"
-            }`}>Contacto</h3>
+            }`}>{t.contact.title}</h3>
             <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <FaMapMarkerAlt className={`text-sm mt-0.5 ${
                     theme === "light" ? "text-gray-400" : "text-[#6b7280]"
                 }`} aria-hidden="true" />
-                <span className={`text-sm ${
+                <span className={`text-base ${
                     theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
                 }`}>Palmares, Alajuela, Costa Rica</span>
               </li>
               <li>
                 <a
                   href="mailto:emanuel260902@gmail.com"
-                  className={`flex items-center gap-3 text-sm transition-colors ${
+                  className={`inline-flex items-center gap-3 min-h-[44px] min-w-[44px] text-base transition-all focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded-lg px-2 py-1 ${
                       theme === "light"
-                          ? "text-gray-600 hover:text-[#3b82f6]"
-                          : "text-[#9ca3af] hover:text-[#60a5fa]"
+                          ? "text-gray-600 hover:text-[#3b82f6] hover:bg-gray-50 focus:ring-offset-white"
+                          : "text-[#9ca3af] hover:text-[#60a5fa] hover:bg-gray-800/50 focus:ring-offset-black"
                   }`}
                   aria-label="Enviar correo electrónico a emanuel260902@gmail.com"
                 >
-                  <FaEnvelope className="text-sm" aria-hidden="true" />
+                  <FaEnvelope className="text-base" aria-hidden="true" />
                   <span>emanuel260902@gmail.com</span>
                 </a>
               </li>
@@ -91,14 +96,14 @@ const Footer = () => {
                   href="https://wa.me/50662076022"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-3 text-sm transition-colors ${
+                  className={`inline-flex items-center gap-3 min-h-[44px] min-w-[44px] text-base transition-all focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded-lg px-2 py-1 ${
                       theme === "light"
-                          ? "text-gray-600 hover:text-[#3b82f6]"
-                          : "text-[#9ca3af] hover:text-[#60a5fa]"
+                          ? "text-gray-600 hover:text-[#3b82f6] hover:bg-gray-50 focus:ring-offset-white"
+                          : "text-[#9ca3af] hover:text-[#60a5fa] hover:bg-gray-800/50 focus:ring-offset-black"
                   }`}
                   aria-label="Contactar por WhatsApp al número +506 62076022 (se abre en nueva ventana)"
                 >
-                  <FaWhatsapp className="text-sm" aria-hidden="true" />
+                  <FaWhatsapp className="text-base" aria-hidden="true" />
                   <span>+506 62076022</span>
                 </a>
               </li>
@@ -109,21 +114,21 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className={`text-lg font-bold mb-4 ${
                 theme === "light" ? "text-gray-900" : "text-white"
-            }`}>Redes Sociales</h3>
+            }`}>{language === "es" ? "Redes Sociales" : "Social Networks"}</h3>
             <ul className="space-y-3">
               <li>
                 <a
                   href="https://github.com/Ebema260902"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-3 text-sm transition-colors ${
+                  className={`inline-flex items-center gap-3 min-h-[44px] min-w-[44px] text-base transition-all focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded-lg px-2 py-1 ${
                       theme === "light"
-                          ? "text-gray-600 hover:text-[#3b82f6]"
-                          : "text-[#9ca3af] hover:text-[#60a5fa]"
+                          ? "text-gray-600 hover:text-[#3b82f6] hover:bg-gray-50 focus:ring-offset-white"
+                          : "text-[#9ca3af] hover:text-[#60a5fa] hover:bg-gray-800/50 focus:ring-offset-black"
                   }`}
                   aria-label="Visitar perfil de GitHub Ebema260902 (se abre en nueva ventana)"
                 >
-                  <FaGithub className="text-sm" aria-hidden="true" />
+                  <FaGithub className="text-base" aria-hidden="true" />
                   <span>/Ebema260902</span>
                 </a>
               </li>
@@ -132,14 +137,14 @@ const Footer = () => {
                   href="https://www.linkedin.com/in/emanuel-ag%C3%BCero-moya-21b6b81a4/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center gap-3 text-sm transition-colors ${
+                  className={`inline-flex items-center gap-3 min-h-[44px] min-w-[44px] text-base transition-all focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded-lg px-2 py-1 ${
                       theme === "light"
-                          ? "text-gray-600 hover:text-[#3b82f6]"
-                          : "text-[#9ca3af] hover:text-[#60a5fa]"
+                          ? "text-gray-600 hover:text-[#3b82f6] hover:bg-gray-50 focus:ring-offset-white"
+                          : "text-[#9ca3af] hover:text-[#60a5fa] hover:bg-gray-800/50 focus:ring-offset-black"
                   }`}
                   aria-label="Visitar perfil de LinkedIn de Emanuel Agüero Moya (se abre en nueva ventana)"
                 >
-                  <FaLinkedin className="text-sm" aria-hidden="true" />
+                  <FaLinkedin className="text-base" aria-hidden="true" />
                   <span>Emanuel Agüero Moya</span>
                 </a>
               </li>
@@ -155,12 +160,12 @@ const Footer = () => {
             <p className={`text-xs ${
                 theme === "light" ? "text-gray-500" : "text-[#9ca3af]"
             }`}>
-              © 2024 Emanuel Agüero. Todos los derechos reservados.
+              © 2024 Emanuel Agüero. {t.footer.rights}.
             </p>
             <p className={`text-xs ${
                 theme === "light" ? "text-gray-500" : "text-[#9ca3af]"
             }`}>
-              Desarrollado con React y TailwindCSS
+              {language === "es" ? "Desarrollado con React y TailwindCSS" : "Developed with React and TailwindCSS"}
             </p>
           </div>
         </div>

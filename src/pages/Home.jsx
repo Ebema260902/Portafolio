@@ -2,16 +2,20 @@ import React, { useState, useEffect } from "react";
 import "../index.css";
 import { Link } from "react-router-dom";
 import { useTheme } from "../contexts/ThemeContext.jsx";
+import { useLanguage } from "../contexts/LanguageContext.jsx";
+import { translations } from "../translations/translations.js";
 
 const Home = () => {
     const { theme } = useTheme();
+    const { language } = useLanguage();
+    const t = translations[language];
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        // Animación de carga que dura 1.5 segundos
+        // Animación de carga reducida para mejor eficiencia (500ms)
         const timer = setTimeout(() => {
             setIsLoading(false);
-        }, 1500);
+        }, 500);
         
         return () => clearTimeout(timer);
     }, []);
@@ -68,7 +72,58 @@ const Home = () => {
                 isLoading ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"
             }`}>
             <div className="max-w-7xl mx-auto px-4 py-8">
-                {/* Perfil y Tech Stack en dos columnas arriba */}
+                {/* Hero Section - Claridad del propósito */}
+                <section className="mb-12 text-center">
+                    <h1 className={`text-5xl md:text-6xl font-bold mb-4 ${
+                        theme === "light" ? "text-gray-900" : "text-white"
+                    }`}>
+                        Emanuel Agüero
+                    </h1>
+                    <p className={`text-2xl md:text-3xl font-semibold mb-3 ${
+                        theme === "light" ? "text-gray-700" : "text-[#e5e7eb]"
+                    }`}>
+                        {t.home.subtitle}
+                    </p>
+                    <p className={`text-lg mb-6 max-w-2xl mx-auto ${
+                        theme === "light" ? "text-gray-600" : "text-[#d1d5db]"
+                    }`}>
+                        {t.home.description}
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                        <Link 
+                            to="/projects"
+                            className={`min-h-[48px] px-6 py-3 bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 active:shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
+                                theme === "light" ? "focus:ring-offset-white" : "focus:ring-offset-black"
+                            }`}
+                            aria-label={language === "es" ? "Ver todos mis proyectos" : "View all my projects"}
+                        >
+                            {t.home.buttons.viewProjects}
+                        </Link>
+                        <a 
+                            href="/Developer Emanuel-Agüero-Resume.pdf"
+                            download="CV_Emanuel_Aguero.pdf"
+                            className={`min-h-[48px] px-6 py-3 bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 active:shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
+                                theme === "light" ? "focus:ring-offset-white" : "focus:ring-offset-black"
+                            }`}
+                            aria-label={language === "es" ? "Descargar CV de Emanuel Agüero en formato PDF" : "Download Emanuel Agüero's CV in PDF format"}
+                        >
+                            {t.home.buttons.downloadCV}
+                        </a>
+                        <a 
+                            href="/contact"
+                            className={`min-h-[48px] px-6 py-3 border-2 font-semibold rounded-lg transition-all duration-300 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
+                                theme === "light"
+                                    ? "border-[#3b82f6] text-[#3b82f6] hover:bg-blue-50 active:bg-blue-100 focus:ring-offset-white"
+                                    : "border-[#60a5fa] text-[#60a5fa] hover:bg-blue-500/10 active:bg-blue-500/20 focus:ring-offset-black"
+                            }`}
+                            aria-label={language === "es" ? "Ir a la página de contacto" : "Go to contact page"}
+                        >
+                            {t.home.buttons.contactMe}
+                        </a>
+                    </div>
+                </section>
+
+                {/* Perfil y Tech Stack en dos columnas */}
                 <section aria-labelledby="profile-heading" className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     {/* Perfil */}
                     <article className={`rounded-xl p-6 transition-all duration-300 hover:shadow-2xl ${
@@ -77,15 +132,15 @@ const Home = () => {
                             : "bg-gradient-to-br from-[#0a0a0a] to-[#111111] border border-[#1a1a1a] shadow-xl shadow-blue-900/20 hover:shadow-blue-500/30"
                     }`}>
                         <div className="mb-5">
-                            <h1 id="profile-heading" className={`text-2xl font-bold mb-2 ${
+                            <h2 id="profile-heading" className={`text-xl font-bold mb-2 ${
                                 theme === "light" ? "text-gray-900" : "text-white"
-                            }`}>Emanuel Agüero</h1>
+                            }`}>{t.home.about.title}</h2>
                             <p className="text-[#3b82f6] text-sm font-mono mb-4" aria-label="Usuario de GitHub">@Ebema260902</p>
                         </div>
-                        <p className={`text-sm mb-5 leading-relaxed ${
+                            <p className={`text-base mb-5 leading-relaxed ${
                             theme === "light" ? "text-gray-700" : "text-[#e5e7eb]"
                         }`}>
-                            Desarrollador web full-stack, diseñador UX/UI y profesional en experiencia de usuario
+                            {t.home.about.description}
                         </p>
                         <address className="space-y-3 mb-5 not-italic">
                             <div className={`flex items-center gap-2 text-sm ${
@@ -103,8 +158,13 @@ const Home = () => {
                                     <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                                     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                 </svg>
-                                <a href="mailto:emanuel260902@gmail.com" className="hover:text-[#3b82f6] transition-colors focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded px-1">
-                                    emanuel260902@gmail.com
+                                <a 
+                                    href="mailto:emanuel260902@gmail.com" 
+                                    className={`inline-block min-h-[44px] min-w-[44px] flex items-center hover:text-[#3b82f6] transition-colors focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 rounded-lg px-2 py-1 text-base ${
+                                        theme === "light" ? "focus:ring-offset-white" : "focus:ring-offset-[#0a0a0a]"
+                                    }`}
+                                >
+                                    <span>emanuel260902@gmail.com</span>
                                 </a>
                             </div>
                         </address>
@@ -116,11 +176,12 @@ const Home = () => {
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 aria-label="Visitar perfil de GitHub Ebema260902 (se abre en nueva ventana)"
-                                className={`block w-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white text-center py-2.5 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
+                                className={`block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white text-center py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 font-medium text-base focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
                                     theme === "light" ? "focus:ring-offset-white" : "focus:ring-offset-[#0a0a0a]"
                                 }`}
                             >
-                                Ver perfil de GitHub →
+                                <span>{t.home.about.viewGitHub}</span>
+                                <span className="ml-2" aria-hidden="true">→</span>
                             </a>
                         </div>
                     </article>
@@ -134,7 +195,7 @@ const Home = () => {
                         <h2 id="tech-stack-heading" className={`text-sm font-bold mb-4 ${
                             theme === "light" ? "text-gray-900" : "text-white"
                         }`}>
-                            Tech Stack
+                            {t.home.techStack.title}
                         </h2>
                         <div className="space-y-4">
                             {/* Stack de Programación */}
@@ -142,7 +203,7 @@ const Home = () => {
                                 <h3 className={`text-xs font-semibold mb-2 ${
                                     theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
                                 }`}>
-                                    Programación
+                                    {t.home.techStack.programming}
                                 </h3>
                                 <div className="flex flex-wrap gap-2" role="list" aria-label="Tecnologías de programación">
                                     {[
@@ -171,7 +232,7 @@ const Home = () => {
                                 <h3 className={`text-xs font-semibold mb-2 ${
                                     theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
                                 }`}>
-                                    Diseño
+                                    {t.home.techStack.design}
                                 </h3>
                                 <div className="flex flex-wrap gap-2" role="list" aria-label="Herramientas de diseño">
                                     {[
@@ -193,24 +254,32 @@ const Home = () => {
 
                 {/* Contenido principal - Todo el ancho */}
                 <div className="w-full">
-                        {/* Información Personal / Historia */}
+                        {/* Información Personal - Contenido más escaneable */}
                         <section aria-labelledby="personal-info-heading" className={`rounded-xl p-6 mb-6 transition-all duration-300 hover:shadow-2xl ${
                             theme === "light"
                                 ? "bg-white border border-gray-200 shadow-xl hover:shadow-blue-200/50"
                                 : "bg-gradient-to-br from-[#0a0a0a] to-[#111111] border border-[#1a1a1a] shadow-xl shadow-blue-900/20 hover:shadow-blue-500/30"
                         }`}>
-                            <h2 id="personal-info-heading" className={`text-lg font-bold mb-4 ${
+                            <h2 id="personal-info-heading" className={`text-xl font-bold mb-4 ${
                                 theme === "light" ? "text-gray-900" : "text-white"
                             }`}>
-                                Información Personal
+                                {t.home.whatIDo.title}
                             </h2>
-                            <p className={`text-sm leading-relaxed ${
-                                theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
-                            }`}>
-                                Desarrollador full-stack y profesional en experiencia de usuario apasionado por crear soluciones web funcionales y atractivas. 
-                                Me enfoco en <span className="text-[#3b82f6] font-medium">frontend moderno, backend robusto, experiencia de usuario y despliegue en la nube</span>. 
-                                Siempre aprendiendo nuevas tecnologías y mejorando mis habilidades.
-                            </p>
+                            <div className="space-y-3">
+                                <p className={`text-base leading-relaxed ${
+                                    theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
+                                }`}>
+                                    {t.home.whatIDo.description}
+                                </p>
+                                <ul className={`space-y-2 list-disc list-inside ${
+                                    theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
+                                }`}>
+                                    <li><strong className="text-[#3b82f6]">{t.home.whatIDo.frontend}</strong> React, JavaScript, TailwindCSS</li>
+                                    <li><strong className="text-[#3b82f6]">{t.home.whatIDo.backend}</strong> Laravel, PHP, C#, ASP.NET</li>
+                                    <li><strong className="text-[#3b82f6]">{t.home.whatIDo.uxui}</strong> Figma, Adobe, diseño centrado en el usuario</li>
+                                    <li><strong className="text-[#3b82f6]">{t.home.whatIDo.deployment}</strong> AWS EC2, Vercel, Pantheon</li>
+                                </ul>
+                            </div>
                         </section>
 
                         {/* Habilidades Blandas */}
@@ -222,22 +291,13 @@ const Home = () => {
                             <h2 id="soft-skills-heading" className={`text-lg font-bold mb-4 ${
                                 theme === "light" ? "text-gray-900" : "text-white"
                             }`}>
-                                Habilidades Blandas
+                                {t.home.softSkills.title}
                             </h2>
                             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3" role="list">
-                                {[
-                                    "Trabajo en equipo",
-                                    "Comunicación efectiva",
-                                    "Resolución de problemas",
-                                    "Adaptabilidad",
-                                    "Pensamiento crítico",
-                                    "Gestión del tiempo",
-                                    "Aprendizaje continuo",
-                                    "Atención al detalle"
-                                ].map((skill) => (
+                                {t.home.softSkills.skills.map((skill) => (
                                     <li key={skill} className="flex items-center gap-2">
                                         <span className="w-1.5 h-1.5 bg-[#3b82f6] rounded-full" aria-hidden="true"></span>
-                                        <span className={`text-sm ${
+                                        <span className={`text-base ${
                                             theme === "light" ? "text-gray-700" : "text-[#e5e7eb]"
                                         }`}>{skill}</span>
                                     </li>
@@ -245,22 +305,36 @@ const Home = () => {
                             </ul>
                         </section>
 
-                        {/* Resumen de Proyectos */}
+                        {/* Resumen de Proyectos - Más prominente */}
                         <div className={`rounded-xl p-6 mb-6 transition-all duration-300 hover:shadow-2xl ${
                             theme === "light"
                                 ? "bg-white border border-gray-200 shadow-xl hover:shadow-blue-200/50"
                                 : "bg-gradient-to-br from-[#0a0a0a] to-[#111111] border border-[#1a1a1a] shadow-xl shadow-blue-900/20 hover:shadow-blue-500/30"
                         }`}>
-                            <h2 className={`text-lg font-bold mb-4 ${
-                                theme === "light" ? "text-gray-900" : "text-white"
-                            }`}>
-                                Resumen de Proyectos
-                            </h2>
+                            <div className="flex items-center justify-between mb-4">
+                                <h2 className={`text-xl font-bold ${
+                                    theme === "light" ? "text-gray-900" : "text-white"
+                                }`}>
+                                    {t.home.projects.title}
+                                </h2>
+                                <Link 
+                                    to="/projects"
+                                    className={`text-sm font-semibold transition-colors ${
+                                        theme === "light"
+                                            ? "text-[#3b82f6] hover:text-[#2563eb]"
+                                            : "text-[#60a5fa] hover:text-[#3b82f6]"
+                                    }`}
+                                >
+                                    {t.home.projects.viewAll} →
+                                </Link>
+                            </div>
                             <div className="space-y-4">
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div>
-                                        <h3 className="text-[#3b82f6] font-semibold text-sm mb-2">ticolancer</h3>
-                                        <p className={`text-xs mb-2 ${
+                                        <h3 className={`font-semibold text-base mb-2 ${
+                                            theme === "light" ? "text-[#3b82f6]" : "text-[#60a5fa]"
+                                        }`}>ticolancer</h3>
+                                        <p className={`text-sm mb-2 ${
                                             theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
                                         }`}>
                                             Plataforma de freelancers con gestión de perfiles y contratos.
@@ -278,8 +352,12 @@ const Home = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--primary)" }}>jint</h3>
-                                        <p className="text-xs mb-2" style={{ color: "var(--text-tertiary)" }}>
+                                        <h3 className={`font-semibold text-base mb-2 ${
+                                            theme === "light" ? "text-[#3b82f6]" : "text-[#60a5fa]"
+                                        }`}>jint</h3>
+                                        <p className={`text-sm mb-2 ${
+                                            theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
+                                        }`}>
                                             Sistema de gestión de tareas para optimizar productividad.
                                         </p>
                                         <div className="flex flex-wrap gap-1.5">
@@ -295,8 +373,12 @@ const Home = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--primary)" }}>kimchis</h3>
-                                        <p className="text-xs mb-2" style={{ color: "var(--text-tertiary)" }}>
+                                        <h3 className={`font-semibold text-base mb-2 ${
+                                            theme === "light" ? "text-[#3b82f6]" : "text-[#60a5fa]"
+                                        }`}>kimchis</h3>
+                                        <p className={`text-sm mb-2 ${
+                                            theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
+                                        }`}>
                                             Plataforma digital para restaurante con menú y reservas.
                                         </p>
                                         <div className="flex flex-wrap gap-1.5">
@@ -312,8 +394,12 @@ const Home = () => {
                                         </div>
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-sm mb-2" style={{ color: "var(--primary)" }}>aguero-artesanal</h3>
-                                        <p className="text-xs mb-2" style={{ color: "var(--text-tertiary)" }}>
+                                        <h3 className={`font-semibold text-base mb-2 ${
+                                            theme === "light" ? "text-[#3b82f6]" : "text-[#60a5fa]"
+                                        }`}>aguero-artesanal</h3>
+                                        <p className={`text-sm mb-2 ${
+                                            theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
+                                        }`}>
                                             Tienda en línea de productos artesanales con WhatsApp.
                                         </p>
                                         <div className="flex flex-wrap gap-1.5">
@@ -335,61 +421,36 @@ const Home = () => {
                             }`}>
                                 <Link 
                                     to="/projects"
-                                    className={`block w-full bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white text-center py-2.5 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 font-medium text-sm focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
+                                    className={`block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white text-center py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 font-medium text-base focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${
                                         theme === "light" ? "focus:ring-offset-white" : "focus:ring-offset-[#0a0a0a]"
                                     }`}
-                                    aria-label="Explorar todos los proyectos del portafolio"
+                                    aria-label={language === "es" ? "Explorar todos los proyectos del portafolio" : "Explore all portfolio projects"}
                                 >
-                                    Explorar todos los proyectos →
+                                    <span>{t.home.projects.exploreAll}</span>
+                                    <span className="ml-2" aria-hidden="true">→</span>
                                 </Link>
                             </div>
                         </div>
 
-                        {/* Intereses y Gustos */}
+                        {/* Intereses - Simplificado y más escaneable */}
                         <div className={`rounded-xl p-6 mb-6 transition-all duration-300 hover:shadow-2xl ${
                             theme === "light"
                                 ? "bg-white border border-gray-200 shadow-xl hover:shadow-blue-200/50"
                                 : "bg-gradient-to-br from-[#0a0a0a] to-[#111111] border border-[#1a1a1a] shadow-xl shadow-blue-900/20 hover:shadow-blue-500/30"
                         }`}>
-                            <h2 className={`text-lg font-bold mb-4 ${
+                            <h2 className={`text-xl font-bold mb-4 ${
                                 theme === "light" ? "text-gray-900" : "text-white"
                             }`}>
-                                Intereses y Gustos
+                                {t.home.interests.title}
                             </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                <div>
-                                    <h3 className="text-[#3b82f6] font-semibold text-sm mb-1">Tecnología</h3>
-                                    <p className={`text-xs ${
-                                        theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
-                                    }`}>
-                                        Exploración de nuevas tecnologías y frameworks.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="text-[#3b82f6] font-semibold text-sm mb-1">Diseño UX/UI</h3>
-                                    <p className={`text-xs ${
-                                        theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
-                                    }`}>
-                                        Creación de interfaces intuitivas con Figma y Adobe.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="text-[#3b82f6] font-semibold text-sm mb-1">Aprendizaje Continuo</h3>
-                                    <p className={`text-xs ${
-                                        theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
-                                    }`}>
-                                        Cursos online y proyectos personales.
-                                    </p>
-                                </div>
-                                <div>
-                                    <h3 className="text-[#3b82f6] font-semibold text-sm mb-1">Colaboración</h3>
-                                    <p className={`text-xs ${
-                                        theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
-                                    }`}>
-                                        Trabajo en equipo y proyectos open source.
-                                    </p>
-                                </div>
-                            </div>
+                            <ul className={`space-y-2 list-disc list-inside ${
+                                theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
+                            }`}>
+                                <li><strong className="text-[#3b82f6]">{t.home.interests.technology}</strong> {t.home.interests.technologyDesc}</li>
+                                <li><strong className="text-[#3b82f6]">{t.home.interests.design}</strong> {t.home.interests.designDesc}</li>
+                                <li><strong className="text-[#3b82f6]">{t.home.interests.learning}</strong> {t.home.interests.learningDesc}</li>
+                                <li><strong className="text-[#3b82f6]">{t.home.interests.collaboration}</strong> {t.home.interests.collaborationDesc}</li>
+                            </ul>
                         </div>
                 </div>
             </div>

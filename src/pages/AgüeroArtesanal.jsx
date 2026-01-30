@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { useTheme } from "../contexts/ThemeContext.jsx";
+import { useLanguage } from "../contexts/LanguageContext.jsx";
+import { translations } from "../translations/translations.js";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -10,6 +12,8 @@ const AgueroArtesanal = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [modalImage, setModalImage] = useState(null);
     const { theme } = useTheme();
+    const { language } = useLanguage();
+    const t = translations[language];
 
     const technologies = [
         { src: "assets/images/icons/wordpress.png", name: "WordPress" },
@@ -36,80 +40,47 @@ const AgueroArtesanal = () => {
         setModalImage(null);
     };
 
+    // Cerrar modal con tecla Escape
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === "Escape" && modalOpen) {
+                setModalOpen(false);
+                setModalImage(null);
+            }
+        };
+
+        if (modalOpen) {
+            document.addEventListener("keydown", handleEscape);
+            // Prevenir scroll del body cuando el modal está abierto
+            document.body.style.overflow = "hidden";
+        }
+
+        return () => {
+            document.removeEventListener("keydown", handleEscape);
+            document.body.style.overflow = "unset";
+        };
+    }, [modalOpen]);
+
     return (
-        <main id="main-content" className={`w-full transition-colors pt-24 ${
+        <main id="main-content" className={`w-full transition-colors pt-20 ${
             theme === "light" ? "bg-white" : "bg-[#0d1117]"
         }`} role="main" aria-label="Detalles del proyecto Agüero Artesanal">
-            {/* Header estilo GitHub */}
-            <div className={`border-b ${
-                theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#161b22]"
-            }`}>
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-                    <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                            <svg className={`w-5 h-5 ${theme === "light" ? "text-gray-500" : "text-[#8b949e]"}`} fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clipRule="evenodd" />
-                            </svg>
-                            <span className={`text-sm ${
-                                theme === "light" ? "text-gray-600" : "text-[#8b949e]"
-                            }`}>
-                                Agüero Artesanal
-                            </span>
-                            <span className={`${theme === "light" ? "text-gray-400" : "text-[#6e7681]"}`}>/</span>
-                            <h1 className={`text-xl font-semibold ${
-                                theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
-                            }`}>Tienda en línea</h1>
-                        </div>
-                        <div className="flex items-center gap-2">
-                            <a
-                                href="https://dev-aguero-artesanal.pantheonsite.io/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className={`px-4 py-1.5 text-sm font-medium rounded-md border transition-colors ${
-                                    theme === "light"
-                                        ? "bg-white border-gray-300 text-gray-700 hover:bg-gray-50"
-                                        : "bg-[#21262d] border-[#30363d] text-[#c9d1d9] hover:bg-[#30363d]"
-                                }`}
-                                aria-label="Visitar sitio web de Agüero Artesanal (se abre en nueva ventana)"
-                            >
-                                <svg className="w-4 h-4 inline mr-1.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                    <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
-                                </svg>
-                                Visitar sitio web de Agüero Artesanal
-                            </a>
-                        </div>
-                    </div>
-                    <p className={`text-sm mb-4 ${
-                        theme === "light" ? "text-gray-600" : "text-[#8b949e]"
-                    }`}>
-                        Tienda en línea dedicada a la creación y venta de productos artesanales en madera hechos a mano
-                    </p>
-                    <div className="flex items-center gap-4 text-sm">
-                            <span className={`flex items-center gap-1.5 ${theme === "light" ? "text-gray-600" : "text-[#8b949e]"}`}>
-                                <span className={`inline-block w-3 h-3 rounded-full ${theme === "light" ? "bg-green-500" : "bg-[#238636]"}`} aria-hidden="true"></span>
-                                <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
-                                </svg>
-                                <span>Public</span>
-                            </span>
-                        <span className={`${theme === "light" ? "text-gray-600" : "text-[#8b949e]"}`}>
-                            <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                            </svg>
-                            WordPress
-                        </span>
-                        <span className={`${theme === "light" ? "text-gray-600" : "text-[#8b949e]"}`}>
-                            <svg className="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd" />
-                            </svg>
-                            Updated 1 month ago
-                        </span>
-                    </div>
-                </div>
+            {/* Título del proyecto */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <h1 className={`text-4xl font-bold mb-2 ${
+                    theme === "light" ? "text-gray-900" : "text-white"
+                }`}>
+                    Agüero Artesanal
+                </h1>
+                <p className={`text-lg ${
+                    theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
+                }`}>
+                    {t.projects.individual.agueroArtesanal.description}
+                </p>
             </div>
 
             {/* Contenido principal estilo GitHub README */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-8">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     {/* Contenido principal (README) */}
                     <div className="lg:col-span-8">
@@ -123,7 +94,7 @@ const AgueroArtesanal = () => {
                                 <h2 className={`text-lg font-semibold ${
                                     theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
                                 }`}>
-                                    📸 Screenshots
+                                    📸 {t.projects.individual.screenshots}
                                 </h2>
                             </div>
                             <div className="p-4">
@@ -175,24 +146,23 @@ const AgueroArtesanal = () => {
                                 <p className={`text-lg mb-6 ${
                                     theme === "light" ? "text-gray-600" : "text-[#8b949e]"
                                 }`}>
-                                    Tienda en línea dedicada a la creación y venta de productos artesanales en madera hechos a mano. Catálogo dinámico con integración de WhatsApp para pedidos.
+                                    {t.projects.individual.agueroArtesanal.description}
                                 </p>
 
                                 <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
                                     theme === "light" ? "border-gray-200" : "border-[#30363d]"
-                                }`}>✨ Características</h2>
+                                }`}>✨ {t.projects.individual.features}</h2>
                                 <ul className={`list-disc pl-6 mb-6 space-y-2 ${
                                     theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
                                 }`}>
-                                    <li>Catálogo dinámico de productos con filtros por categoría</li>
-                                    <li>Integración con WhatsApp para contacto rápido y pedidos</li>
-                                    <li>Sitio responsivo optimizado para dispositivos móviles</li>
-                                    <li>Construido con WordPress + plugins personalizados</li>
+                                    {t.projects.individual.agueroArtesanal.features.map((feature, index) => (
+                                        <li key={index}>{feature}</li>
+                                    ))}
                                 </ul>
 
                                 <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
                                     theme === "light" ? "border-gray-200" : "border-[#30363d]"
-                                }`}>🛠️ Tecnologías</h2>
+                                }`}>🛠️ {t.projects.individual.technologies}</h2>
                                 <div className="flex flex-wrap gap-3 mb-6">
                                     {technologies.map((tech, index) => (
                                         <span key={index} className={`px-3 py-1 rounded-md text-sm border ${
@@ -207,41 +177,38 @@ const AgueroArtesanal = () => {
 
                                 <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
                                     theme === "light" ? "border-gray-200" : "border-[#30363d]"
-                                }`}>📋 Metodología</h2>
+                                }`}>📋 {t.projects.individual.methodology}</h2>
                                 <p className={`mb-4 ${
                                     theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
                                 }`}>
-                                    Desarrollo basado en WordPress utilizando metodología de diseño y desarrollo iterativo, 
-                                    aprovechando las capacidades de CMS para crear una solución eficiente y fácil de mantener.
+                                    {t.projects.individual.agueroArtesanal.methodology.title}
                                 </p>
                                 <ul className={`list-disc pl-6 mb-6 space-y-2 ${
                                     theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
                                 }`}>
-                                    <li>Desarrollo con WordPress y personalización de temas</li>
-                                    <li>Uso de Elementor para diseño visual sin código</li>
-                                    <li>Implementación de Gutenberg para contenido dinámico</li>
-                                    <li>Diseño responsive con enfoque mobile-first</li>
+                                    {t.projects.individual.agueroArtesanal.methodology.items.map((item, index) => (
+                                        <li key={index}>{item}</li>
+                                    ))}
                                 </ul>
 
                                 <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
                                     theme === "light" ? "border-gray-200" : "border-[#30363d]"
-                                }`}>👤 Mi Rol</h2>
+                                }`}>👤 {t.projects.individual.myRole}</h2>
                                 <p className={`mb-4 ${
                                     theme === "light" ? "text-gray-700" : "text-[#c9d1d9]"
                                 }`}>
-                                    Desarrollé completamente la tienda en línea, desde la configuración inicial de WordPress 
-                                    hasta la personalización de plugins y la integración con WhatsApp para pedidos.
+                                    {t.projects.individual.agueroArtesanal.role}
                                 </p>
 
                                 <h2 className={`text-2xl font-semibold mt-8 mb-4 pb-2 border-b ${
                                     theme === "light" ? "border-gray-200" : "border-[#30363d]"
-                                }`}>📊 Resultados</h2>
+                                }`}>📊 {t.projects.individual.results}</h2>
                                 <div className="grid grid-cols-2 gap-4 mb-6">
                                     {[
-                                        { label: "Productos", value: "20+" },
-                                        { label: "Tiempo", value: "1 mes" },
-                                        { label: "Tecnologías", value: "4+" },
-                                        { label: "Secciones", value: "6" },
+                                        { label: language === "es" ? "Productos" : "Products", value: "20+" },
+                                        { label: t.projects.individual.labels.time, value: language === "es" ? "1 mes" : "1 month" },
+                                        { label: t.projects.individual.technologies, value: "4+" },
+                                        { label: language === "es" ? "Secciones" : "Sections", value: "6" },
                                     ].map((result, i) => (
                                         <div key={i} className={`p-4 rounded-md border ${
                                             theme === "light"
@@ -271,13 +238,13 @@ const AgueroArtesanal = () => {
                             }`}>
                                 <h3 className={`text-sm font-semibold ${
                                     theme === "light" ? "text-gray-900" : "text-[#c9d1d9]"
-                                }`}>About</h3>
+                                }`}>{t.projects.individual.about}</h3>
                             </div>
                             <div className="p-4">
                                 <p className={`text-sm mb-4 leading-relaxed ${
                                     theme === "light" ? "text-gray-600" : "text-[#8b949e]"
                                 }`}>
-                                    Agüero Artesanal es una tienda en línea completa desarrollada con WordPress y Elementor para la venta de productos artesanales en madera hechos a mano. La plataforma incluye un catálogo dinámico con galería de imágenes de alta calidad para cada producto, sistema de filtros por categoría para fácil navegación, integración directa con WhatsApp para contacto inmediato y pedidos personalizados, diseño completamente responsive optimizado para todos los dispositivos móviles, y uso de WordPress para facilitar la gestión de contenido por parte del cliente. Desarrollada siguiendo metodología de diseño y desarrollo iterativo, aprovecha las capacidades de CMS para crear una solución eficiente y fácil de mantener. El sitio está completamente operativo y desplegado en Pantheon, permitiendo al cliente gestionar fácilmente su contenido y recibir consultas a través de WhatsApp. La solución es escalable y fácil de mantener.
+                                    {t.projects.individual.agueroArtesanal.about}
                                 </p>
                                 <div className="space-y-3">
                                     <div>
@@ -288,12 +255,12 @@ const AgueroArtesanal = () => {
                                           className={`text-sm hover:underline ${
                                               theme === "light" ? "text-blue-600" : "text-[#58a6ff]"
                                           }`}
-                                          aria-label="Visitar sitio web de Agüero Artesanal (se abre en nueva ventana)"
+                                          aria-label={language === "es" ? "Visitar sitio web de Agüero Artesanal (se abre en nueva ventana)" : "Visit Agüero Artesanal website (opens in new window)"}
                                         >
                                             <svg className="w-4 h-4 inline mr-2" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
                                                 <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                                             </svg>
-                                            Visitar sitio web de Agüero Artesanal
+                                            {t.projects.individual.visitWebsite}
                                         </a>
                                     </div>
                                     <div>
@@ -316,19 +283,23 @@ const AgueroArtesanal = () => {
             {/* Modal para imagen ampliada */}
             {modalOpen && (
                 <div
-                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-pointer"
+                    className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 cursor-pointer backdrop-blur-sm"
                     onClick={closeModal}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label={language === "es" ? "Vista ampliada de imagen" : "Expanded image view"}
                 >
                     <img
                         src={modalImage}
-                        alt="Imagen ampliada"
-                        className="max-w-full max-h-full rounded-lg"
+                        alt={language === "es" ? "Imagen ampliada del proyecto" : "Expanded project image"}
+                        className="max-w-full max-h-full rounded-lg shadow-2xl"
                         onClick={(e) => e.stopPropagation()}
                     />
                     <button
                         onClick={closeModal}
-                        className="absolute top-5 right-5 text-white bg-black bg-opacity-70 rounded-full p-2 text-3xl font-bold hover:bg-opacity-90"
-                        aria-label="Cerrar modal"
+                        className="absolute top-5 right-5 min-h-[44px] min-w-[44px] flex items-center justify-center text-white bg-black bg-opacity-70 hover:bg-opacity-90 active:bg-opacity-100 rounded-full p-2 text-3xl font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-black"
+                        aria-label={language === "es" ? "Cerrar vista ampliada (presiona Escape)" : "Close expanded view (press Escape)"}
+                        type="button"
                     >
                         &times;
                     </button>

@@ -45,10 +45,87 @@ body {
     color: #111827;
 }
 
-/* Focus visible para navegación por teclado */
+/* Focus visible para navegación por teclado - Mejorado para accesibilidad */
 *:focus-visible {
-    outline: 2px solid #3b82f6;
-    outline-offset: 2px;
+    outline: 3px solid #3b82f6;
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Asegurar tamaño mínimo de fuente legible */
+body {
+    font-size: 16px;
+}
+
+/* Mejorar contraste de texto en modo claro */
+[data-theme="light"] {
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-tertiary: #6b7280;
+}
+
+/* Mejorar contraste de texto en modo oscuro */
+[data-theme="dark"],
+:not([data-theme]) {
+    --text-primary: #f9fafb;
+    --text-secondary: #e5e7eb;
+    --text-tertiary: #d1d5db;
+}
+
+/* Áreas clickeables mínimas - WCAG 2.5.5 */
+/* Solo aplicar a elementos interactivos principales, no a todos los enlaces */
+button:not(.no-min-size),
+a:not(.no-min-size):not([aria-hidden="true"]),
+input[type="button"],
+input[type="submit"],
+input[type="checkbox"],
+input[type="radio"] {
+    min-height: 44px;
+    min-width: 44px;
+}
+
+/* Para elementos pequeños como badges, usar padding adecuado */
+.badge,
+.tag {
+    min-height: 32px;
+    padding: 6px 12px;
+}
+
+/* Separación entre elementos interactivos */
+a + a,
+button + button,
+a + button,
+button + a {
+    margin-left: 8px;
+}
+
+/* Estados visuales claros - no solo color */
+[aria-current="page"] {
+    font-weight: 600;
+    position: relative;
+}
+
+/* Mejorar contraste de enlaces - Solo enlaces de texto simples */
+a:not(.no-underline):not([class*="no-underline"]) {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+}
+
+a:not(.no-underline):not([class*="no-underline"]):hover,
+a:not(.no-underline):not([class*="no-underline"]):focus {
+    text-decoration-thickness: 2px;
+}
+
+/* Asegurar que elementos dentro de enlaces no tengan subrayado a menos que se especifique */
+a p, a span:not(.underline), a div {
+    text-decoration: none !important;
+}
+
+/* Estados de botones más claros */
+button:active,
+a:active {
+    transform: scale(0.98);
 }
 
 /* Prevenir animaciones para usuarios que prefieren movimiento reducido */
