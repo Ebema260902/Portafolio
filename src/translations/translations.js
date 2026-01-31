@@ -18,7 +18,7 @@ export const translations = {
     // Home
     home: {
       title: "Emanuel Agüero",
-      subtitle: "Desarrollador Web Full-Stack",
+      subtitle: "Diseñador UX/UI y Desarrollador Web",
       description: "Creo soluciones web funcionales y atractivas. Especializado en frontend moderno, backend robusto y experiencia de usuario.",
       buttons: {
         viewProjects: "Ver mis proyectos",
@@ -27,7 +27,7 @@ export const translations = {
       },
       about: {
         title: "Sobre mí",
-        description: "Desarrollador web full-stack, diseñador UX/UI y profesional en experiencia de usuario",
+        description: "Diseñador UX/UI, desarrollador web y profesional en experiencia de usuario",
         viewGitHub: "Ver perfil de GitHub",
       },
       techStack: {
@@ -37,7 +37,7 @@ export const translations = {
       },
       whatIDo: {
         title: "¿Qué hago?",
-        description: "Desarrollador full-stack especializado en crear soluciones web funcionales y atractivas.",
+        description: "Diseñador UX/UI y desarrollador web especializado en crear soluciones web funcionales y atractivas.",
         frontend: "Frontend moderno:",
         backend: "Backend robusto:",
         uxui: "UX/UI Design:",
@@ -132,7 +132,7 @@ export const translations = {
               "API RESTful",
             ],
           },
-          role: "Como desarrollador full-stack, fui responsable de la arquitectura completa del proyecto, desde el diseño de la base de datos hasta la implementación del frontend y backend.",
+          role: "Como diseñador UX/UI y desarrollador web full-stack, fui responsable de la arquitectura completa del proyecto, desde el diseño de la base de datos hasta la implementación del frontend y backend.",
         },
         jint: {
           description: "Sistema de gestión de tareas diseñado para optimizar la productividad. Permite organizar proyectos, establecer prioridades y mejorar la colaboración en equipo.",
@@ -152,7 +152,7 @@ export const translations = {
               "Testing continuo",
             ],
           },
-          role: "Desarrollador full-stack responsable del diseño e implementación completa del sistema, incluyendo la arquitectura de datos y la experiencia de usuario.",
+          role: "Diseñador UX/UI y desarrollador web full-stack responsable del diseño e implementación completa del sistema, incluyendo la arquitectura de datos y la experiencia de usuario.",
         },
         kimchis: {
           description: "Plataforma digital creada para mejorar la experiencia gastronómica del restaurante de comida coreana. Incluye menú digital, sistema de reservas y promociones.",
@@ -232,7 +232,7 @@ export const translations = {
     // Home
     home: {
       title: "Emanuel Agüero",
-      subtitle: "Full-Stack Web Developer",
+      subtitle: "UX/UI Designer and Web Developer",
       description: "I create functional and attractive web solutions. Specialized in modern frontend, robust backend and user experience.",
       buttons: {
         viewProjects: "View my projects",
@@ -241,7 +241,7 @@ export const translations = {
       },
       about: {
         title: "About me",
-        description: "Full-stack web developer, UX/UI designer and user experience professional",
+        description: "UX/UI designer, web developer and user experience professional",
         viewGitHub: "View GitHub profile",
       },
       techStack: {
@@ -251,7 +251,7 @@ export const translations = {
       },
       whatIDo: {
         title: "What I do",
-        description: "Full-stack developer specialized in creating functional and attractive web solutions.",
+        description: "UX/UI designer and web developer specialized in creating functional and attractive web solutions.",
         frontend: "Modern frontend:",
         backend: "Robust backend:",
         uxui: "UX/UI Design:",
@@ -346,7 +346,7 @@ export const translations = {
               "RESTful API",
             ],
           },
-          role: "As a full-stack developer, I was responsible for the complete architecture of the project, from database design to frontend and backend implementation.",
+          role: "As a UX/UI designer and full-stack web developer, I was responsible for the complete architecture of the project, from database design to frontend and backend implementation.",
         },
         jint: {
           description: "Task management system designed to optimize productivity. Allows organizing projects, setting priorities and improving team collaboration.",
@@ -366,7 +366,7 @@ export const translations = {
               "Continuous testing",
             ],
           },
-          role: "Full-stack developer responsible for the complete design and implementation of the system, including data architecture and user experience.",
+          role: "UX/UI designer and full-stack web developer responsible for the complete design and implementation of the system, including data architecture and user experience.",
         },
         kimchis: {
           description: "Digital platform created to improve the gastronomic experience of the Korean restaurant. Includes digital menu, reservation system and promotions.",

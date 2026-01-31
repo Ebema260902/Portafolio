@@ -26,8 +26,8 @@ const Footer = () => {
                 theme === "light" ? "text-gray-600" : "text-[#9ca3af]"
             }`}>
               {language === "es" 
-                ? "Desarrollador web full-stack, diseñador UX/UI y profesional en experiencia de usuario. Comparto proyectos y experiencias en desarrollo web, diseño multimedia y tecnología."
-                : "Full-stack web developer, UX/UI designer and user experience professional. I share projects and experiences in web development, multimedia design and technology."}
+                ? "Diseñador UX/UI, desarrollador web y profesional en experiencia de usuario. Comparto proyectos y experiencias en diseño de interfaces, desarrollo web y tecnología."
+                : "UX/UI designer, web developer and user experience professional. I share projects and experiences in interface design, web development and technology."}
             </p>
           </div>
 
