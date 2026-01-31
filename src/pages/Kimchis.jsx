@@ -67,7 +67,7 @@ const Kimchis = () => {
 
     return (
         <main id="main-content" className={`w-full transition-colors pt-20 ${
-            theme === "light" ? "bg-white" : "bg-[#0d1117]"
+            theme === "light" ? "bg-white" : "bg-black"
         }`} role="main" aria-label="Detalles del proyecto Kimchis">
             {/* Título del proyecto */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -90,7 +90,7 @@ const Kimchis = () => {
                     <div className="lg:col-span-8">
                         {/* Galería de imágenes */}
                         <div className={`rounded-lg border mb-6 overflow-hidden ${
-                            theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#0d1117]"
+                            theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-black"
                         }`}>
                             <div className={`p-4 border-b ${
                                 theme === "light" ? "border-gray-200" : "border-[#30363d]"
@@ -131,7 +131,7 @@ const Kimchis = () => {
 
                         {/* Contenido del proyecto */}
                         <article className={`rounded-lg border ${
-                            theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#0d1117]"
+                            theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-black"
                         }`}>
                             <div className={`px-6 py-4 markdown-body ${
                                 theme === "light" ? "text-gray-800" : "text-[#c9d1d9]"
@@ -174,7 +174,7 @@ const Kimchis = () => {
                                         <span key={index} className={`px-3 py-1 rounded-md text-sm border ${
                                             theme === "light"
                                                 ? "bg-gray-50 border-gray-300 text-gray-700"
-                                                : "bg-[#161b22] border-[#30363d] text-[#c9d1d9]"
+                                                : "bg-[#0a0a0a] border-[#30363d] text-[#c9d1d9]"
                                         }`}>
                                             {tech.name}
                                         </span>
@@ -219,7 +219,7 @@ const Kimchis = () => {
                                         <div key={i} className={`p-4 rounded-md border ${
                                             theme === "light"
                                                 ? "bg-gray-50 border-gray-200"
-                                                : "bg-[#161b22] border-[#30363d]"
+                                                : "bg-[#0a0a0a] border-[#30363d]"
                                         }`}>
                                             <div className={`text-sm ${
                                                 theme === "light" ? "text-gray-600" : "text-[#8b949e]"
@@ -237,7 +237,7 @@ const Kimchis = () => {
                     {/* Sidebar estilo GitHub */}
                     <div className="lg:col-span-4">
                         <div className={`rounded-lg border mb-4 ${
-                            theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#161b22]"
+                            theme === "light" ? "border-gray-200 bg-white" : "border-[#30363d] bg-[#0a0a0a]"
                         }`}>
                             <div className={`p-4 border-b ${
                                 theme === "light" ? "border-gray-200" : "border-[#30363d]"
