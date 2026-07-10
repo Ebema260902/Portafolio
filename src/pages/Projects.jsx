@@ -79,28 +79,44 @@ const Projects = () => {
             features: t.projects.list.jint?.features || []
         },
         {
-            name: "kimchis",
-            description: t.projects.list.kimchis?.description || "",
-            language: "PHP",
-            languageColor: "#e34c26",
-            link: "/kimchis",
+            name: "agencia-de-carros",
+            description: t.projects.list.agenciaDeCarros?.description || "",
+            language: "Next.js",
+            languageColor: "#000000",
+            link: "https://agencia-de-carros.vercel.app/",
+            github: "https://github.com/Ebema260902/Agencia-de-Carros",
+            isExternal: true,
             isPrivate: false,
-            image: "assets/images/kimchis/kimchis1.png",
-            technologies: ["Laravel", "JavaScript", "MySQL", "Bootstrap"],
-            type: t.projects.list.kimchis?.type || "",
-            features: t.projects.list.kimchis?.features || []
+            image: "assets/images/agencia/image.png",
+            technologies: ["Next.js", "React", "TailwindCSS"],
+            type: t.projects.list.agenciaDeCarros?.type || "",
+            features: t.projects.list.agenciaDeCarros?.features || []
         },
         {
-            name: "aguero-artesanal",
-            description: t.projects.list.agueroArtesanal?.description || "",
-            language: "WordPress",
-            languageColor: "#0073aa",
-            link: "/agueroartesanal",
+            name: "perfumeria",
+            description: t.projects.list.perfumeria?.description || "",
+            language: "Shopify",
+            languageColor: "#96bf48",
+            link: "https://perfume-store-9757.myshopify.com/",
+            isExternal: true,
             isPrivate: false,
-            image: "assets/images/agueroartesanal/agueroartesanal.png",
-            technologies: ["WordPress", "Elementor", "WooCommerce"],
-            type: t.projects.list.agueroArtesanal?.type || "",
-            features: t.projects.list.agueroArtesanal?.features || []
+            image: "assets/images/perfumeria/image.png",
+            technologies: ["Shopify", "Liquid"],
+            type: t.projects.list.perfumeria?.type || "",
+            features: t.projects.list.perfumeria?.features || []
+        },
+        {
+            name: "cafetería",
+            description: t.projects.list.cafeteria?.description || "",
+            language: "Next.js",
+            languageColor: "#000000",
+            link: "https://cafeteria-red-eta.vercel.app/",
+            isExternal: true,
+            isPrivate: false,
+            image: "assets/images/cafeteria/cafeteria.webp",
+            technologies: ["Next.js", "TailwindCSS"],
+            type: t.projects.list.cafeteria?.type || "",
+            features: t.projects.list.cafeteria?.features || []
         }
     ];
 
@@ -146,98 +162,120 @@ const Projects = () => {
 
                 {/* Projects list */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {repositories.map((repo, index) => (
-                        <Link
-                            key={index}
-                            to={repo.link}
-                            className={`group block rounded-xl overflow-hidden hover:border-[#3b82f6] hover:scale-[1.02] active:scale-[0.98] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/30 active:shadow-md border-2 no-underline ${
-                                theme === "light"
-                                    ? "bg-white border-gray-200 focus:ring-offset-white"
-                                    : "bg-[#0a0a0a] border-[#1a1a1a] focus:ring-offset-black"
-                            }`}
-                            aria-label={language === "es" ? `Ver detalles del proyecto ${repo.name}. Presiona Enter o haz clic para abrir` : `View ${repo.name} project details. Press Enter or click to open`}
-                        >
-                            {/* Imagen del proyecto */}
-                            <div className={`w-full h-48 overflow-hidden relative ${
-                                theme === "light" ? "bg-gray-100" : "bg-[#111111]"
-                            }`}>
-                                <img
-                                    src={repo.image}
-                                    alt={language === "es" ? `Captura de pantalla del proyecto ${repo.name}` : `${repo.name} project screenshot`}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                                    loading="lazy"
-                                    onError={(e) => {
-                                        e.target.style.display = 'none';
-                                        if (e.target.nextSibling) {
-                                            e.target.nextSibling.style.display = 'flex';
-                                        }
-                                    }}
-                                />
-                                <div className={`hidden w-full h-full items-center justify-center ${
-                                    theme === "light" ? "text-gray-400" : "text-[#6b7280]"
+                    {repositories.map((repo, index) => {
+                        const cardClassName = `group block rounded-xl overflow-hidden hover:border-[#3b82f6] hover:scale-[1.02] active:scale-[0.98] focus:border-[#3b82f6] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/30 active:shadow-md border-2 no-underline ${
+                            theme === "light"
+                                ? "bg-white border-gray-200 focus:ring-offset-white"
+                                : "bg-[#0a0a0a] border-[#1a1a1a] focus:ring-offset-black"
+                        }`;
+                        const ariaLabel = language === "es" ? `Ver detalles del proyecto ${repo.name}. Presiona Enter o haz clic para abrir` : `View ${repo.name} project details. Press Enter or click to open`;
+
+                        const cardContent = (
+                            <>
+                                {/* Imagen del proyecto */}
+                                <div className={`w-full h-48 overflow-hidden relative ${
+                                    theme === "light" ? "bg-gray-100" : "bg-[#111111]"
                                 }`}>
-                                    <span className="text-sm">{language === "es" ? "Imagen no disponible" : "Image not available"}</span>
-                                </div>
-                            </div>
-                            
-                            {/* Contenido del proyecto */}
-                            <div className="p-6" style={{ textDecoration: 'none' }}>
-                                <div className="mb-3">
-                                    <div className="flex items-center justify-between mb-1">
-                                        <span className="text-[#3b82f6] font-bold text-xl group-hover:text-[#60a5fa] transition-colors underline" style={{ textDecoration: 'underline' }}>{repo.name}</span>
-                                        {repo.type && (
-                                            <span className={`text-xs px-2 py-0.5 rounded ${
-                                                theme === "light" 
-                                                    ? "bg-blue-50 text-blue-700" 
-                                                    : "bg-blue-900/30 text-blue-400"
-                                            }`} style={{ textDecoration: 'none' }}>
-                                                {repo.type}
-                                            </span>
-                                        )}
-                                    </div>
-                                </div>
-                                <p className={`text-base mb-4 leading-relaxed ${
-                                    theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
-                                }`} style={{ textDecoration: 'none' }}>{repo.description}</p>
-                                
-                                {/* Tecnologías */}
-                                {repo.technologies && repo.technologies.length > 0 && (
-                                    <div className="mb-4">
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {repo.technologies.slice(0, 4).map((tech, idx) => (
-                                                <span key={idx} className={`px-2 py-0.5 rounded text-xs font-mono ${
-                                                    theme === "light"
-                                                        ? "bg-gray-100 text-gray-700"
-                                                        : "bg-[#111111] text-[#9ca3af]"
-                                                }`} style={{ textDecoration: 'none' }}>
-                                                    {tech}
-                                                </span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-                                
-                                {/* Características destacadas */}
-                                {repo.features && repo.features.length > 0 && (
-                                    <div className={`pt-3 border-t ${
-                                        theme === "light" ? "border-gray-200" : "border-[#1a1a1a]"
+                                    <img
+                                        src={repo.image}
+                                        alt={language === "es" ? `Captura de pantalla del proyecto ${repo.name}` : `${repo.name} project screenshot`}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                        loading="lazy"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none';
+                                            if (e.target.nextSibling) {
+                                                e.target.nextSibling.style.display = 'flex';
+                                            }
+                                        }}
+                                    />
+                                    <div className={`hidden w-full h-full items-center justify-center ${
+                                        theme === "light" ? "text-gray-400" : "text-[#6b7280]"
                                     }`}>
-                                        <div className="flex flex-wrap gap-1.5">
-                                            {repo.features.map((feature, idx) => (
-                                                <span key={idx} className={`text-xs px-2 py-0.5 rounded ${
+                                        <span className="text-sm">{language === "es" ? "Imagen no disponible" : "Image not available"}</span>
+                                    </div>
+                                </div>
+
+                                {/* Contenido del proyecto */}
+                                <div className="p-6" style={{ textDecoration: 'none' }}>
+                                    <div className="mb-3">
+                                        <div className="flex items-center justify-between mb-1">
+                                            <span className="text-[#3b82f6] font-bold text-xl group-hover:text-[#60a5fa] transition-colors underline" style={{ textDecoration: 'underline' }}>{repo.name}</span>
+                                            {repo.type && (
+                                                <span className={`text-xs px-2 py-0.5 rounded ${
                                                     theme === "light"
                                                         ? "bg-blue-50 text-blue-700"
-                                                        : "bg-blue-900/20 text-blue-400"
+                                                        : "bg-blue-900/30 text-blue-400"
                                                 }`} style={{ textDecoration: 'none' }}>
-                                                    {feature}
+                                                    {repo.type}
                                                 </span>
-                                            ))}
+                                            )}
                                         </div>
                                     </div>
-                                )}
-                            </div>
-                        </Link>
-                    ))}
+                                    <p className={`text-base mb-4 leading-relaxed ${
+                                        theme === "light" ? "text-gray-700" : "text-[#d1d5db]"
+                                    }`} style={{ textDecoration: 'none' }}>{repo.description}</p>
+
+                                    {/* Tecnologías */}
+                                    {repo.technologies && repo.technologies.length > 0 && (
+                                        <div className="mb-4">
+                                            <div className="flex flex-wrap gap-1.5">
+                                                {repo.technologies.slice(0, 4).map((tech, idx) => (
+                                                    <span key={idx} className={`px-2 py-0.5 rounded text-xs font-mono ${
+                                                        theme === "light"
+                                                            ? "bg-gray-100 text-gray-700"
+                                                            : "bg-[#111111] text-[#9ca3af]"
+                                                    }`} style={{ textDecoration: 'none' }}>
+                                                        {tech}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {/* Características destacadas */}
+                                    {repo.features && repo.features.length > 0 && (
+                                        <div className={`pt-3 border-t ${
+                                            theme === "light" ? "border-gray-200" : "border-[#1a1a1a]"
+                                        }`}>
+                                            <div className="flex flex-wrap gap-1.5">
+                                                {repo.features.map((feature, idx) => (
+                                                    <span key={idx} className={`text-xs px-2 py-0.5 rounded ${
+                                                        theme === "light"
+                                                            ? "bg-blue-50 text-blue-700"
+                                                            : "bg-blue-900/20 text-blue-400"
+                                                    }`} style={{ textDecoration: 'none' }}>
+                                                        {feature}
+                                                    </span>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </>
+                        );
+
+                        return repo.isExternal ? (
+                            <a
+                                key={index}
+                                href={repo.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className={cardClassName}
+                                aria-label={ariaLabel}
+                            >
+                                {cardContent}
+                            </a>
+                        ) : (
+                            <Link
+                                key={index}
+                                to={repo.link}
+                                className={cardClassName}
+                                aria-label={ariaLabel}
+                            >
+                                {cardContent}
+                            </Link>
+                        );
+                    })}
                 </div>
             </div>
         </main>

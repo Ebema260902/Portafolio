@@ -15,9 +15,9 @@ export const LanguageProvider = ({ children }) => {
     // Obtener idioma guardado o usar 'es' por defecto
     if (typeof window !== "undefined") {
       const savedLanguage = localStorage.getItem("language");
-      return savedLanguage || "es";
+      return savedLanguage || "en";
     }
-    return "es";
+    return "en";
   });
 
   useEffect(() => {

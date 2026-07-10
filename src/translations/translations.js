@@ -88,15 +88,20 @@ export const translations = {
           type: "Aplicación Web",
           features: ["Gestión de tareas", "Prioridades", "Colaboración"],
         },
-        kimchis: {
-          description: "Plataforma digital creada para mejorar la experiencia gastronómica del restaurante de comida coreana. Incluye menú digital, sistema de reservas y promociones.",
-          type: "Sitio Web Restaurante",
-          features: ["Menú digital", "Reservas online", "Sistema de promociones"],
+        agenciaDeCarros: {
+          description: "Sitio web de agencia de venta de vehículos con catálogo interactivo, filtros y sistema de contacto. Desarrollado con Next.js para una experiencia de usuario moderna.",
+          type: "Sitio Web",
+          features: ["Catálogo de vehículos", "Filtros avanzados", "Diseño moderno"],
         },
-        agueroArtesanal: {
-          description: "Tienda en línea dedicada a la creación y venta de productos artesanales en madera hechos a mano. Catálogo dinámico con integración de WhatsApp para pedidos.",
+        perfumeria: {
+          description: "Tienda en línea de perfumes y fragancias con experiencia de compra premium, construida en Shopify con integración de pasarela de pagos.",
           type: "E-commerce",
-          features: ["Catálogo dinámico", "Integración WhatsApp", "Responsive"],
+          features: ["Tienda online", "Shopify", "Catálogo de productos"],
+        },
+        cafeteria: {
+          description: "Sitio web para una cafetería con menú interactivo, galería de productos y diseño moderno orientado a la experiencia del cliente.",
+          type: "Sitio Web",
+          features: ["Menú interactivo", "Diseño moderno", "Responsive"],
         },
       },
       individual: {
@@ -153,46 +158,6 @@ export const translations = {
             ],
           },
           role: "Diseñador UX/UI y desarrollador web full-stack responsable del diseño e implementación completa del sistema, incluyendo la arquitectura de datos y la experiencia de usuario.",
-        },
-        kimchis: {
-          description: "Plataforma digital creada para mejorar la experiencia gastronómica del restaurante de comida coreana. Incluye menú digital, sistema de reservas y promociones.",
-          about: "Kimchis es una plataforma web completa desarrollada con Laravel y JavaScript para mejorar la experiencia digital del restaurante de comida coreana. La plataforma incluye un menú digital interactivo con categorías y descripciones detalladas de cada platillo, sistema de reservas en línea con validación de disponibilidad en tiempo real, sección de promociones destacada para ofertas especiales, y diseño completamente responsive optimizado para dispositivos móviles. Desarrollada siguiendo metodología de prototipado rápido con feedback constante del cliente, utiliza arquitectura MVC con Laravel para organización del código, implementación de sistema de reservas con validaciones robustas, e integración de JavaScript vanilla para interactividad. La plataforma fue implementada exitosamente mejorando significativamente la experiencia digital del restaurante y facilitando el proceso de reservas para los clientes.",
-          features: [
-            "Menú digital interactivo",
-            "Sistema de reservas en línea",
-            "Promociones y descuentos exclusivos",
-            "Interfaz optimizada para móviles",
-          ],
-          methodology: {
-            title: "Desarrollo orientado a resolver necesidades específicas del restaurante, utilizando metodología de prototipado rápido y validación con el cliente.",
-            items: [
-              "Desarrollo iterativo con feedback constante del cliente",
-              "Diseño responsive-first para experiencia móvil",
-              "Arquitectura MVC con Laravel para organización del código",
-              "Implementación de sistema de reservas con validaciones",
-            ],
-          },
-          role: "Fui responsable del desarrollo completo de la plataforma, desde el análisis de requisitos hasta la implementación y despliegue, trabajando directamente con el cliente.",
-        },
-        agueroArtesanal: {
-          description: "Tienda en línea dedicada a la creación y venta de productos artesanales en madera hechos a mano. Catálogo dinámico con integración de WhatsApp para pedidos.",
-          about: "Agüero Artesanal es una tienda en línea completa desarrollada con WordPress y Elementor para la venta de productos artesanales en madera hechos a mano. La plataforma incluye un catálogo dinámico con galería de imágenes de alta calidad para cada producto, sistema de filtros por categoría para fácil navegación, integración directa con WhatsApp para contacto inmediato y pedidos personalizados, diseño completamente responsive optimizado para todos los dispositivos móviles, y uso de WordPress para facilitar la gestión de contenido por parte del cliente. Desarrollada siguiendo metodología de diseño y desarrollo iterativo, aprovecha las capacidades de CMS para crear una solución eficiente y fácil de mantener. El sitio está completamente operativo y desplegado en Pantheon, permitiendo al cliente gestionar fácilmente su contenido y recibir consultas a través de WhatsApp. La solución es escalable y fácil de mantener.",
-          features: [
-            "Catálogo dinámico de productos con filtros por categoría",
-            "Integración con WhatsApp para contacto rápido y pedidos",
-            "Sitio responsivo optimizado para dispositivos móviles",
-            "Construido con WordPress + plugins personalizados",
-          ],
-          methodology: {
-            title: "Desarrollo basado en WordPress utilizando metodología de diseño y desarrollo iterativo, aprovechando las capacidades de CMS para crear una solución eficiente y fácil de mantener.",
-            items: [
-              "Desarrollo con WordPress y personalización de temas",
-              "Uso de Elementor para diseño visual sin código",
-              "Implementación de Gutenberg para contenido dinámico",
-              "Diseño responsive con enfoque mobile-first",
-            ],
-          },
-          role: "Desarrollé completamente la tienda en línea, desde la configuración inicial de WordPress hasta la personalización de plugins y la integración con WhatsApp para pedidos.",
         },
       },
     },
@@ -302,15 +267,20 @@ export const translations = {
           type: "Web Application",
           features: ["Task management", "Priorities", "Collaboration"],
         },
-        kimchis: {
-          description: "Digital platform created to improve the gastronomic experience of the Korean restaurant. Includes digital menu, reservation system and promotions.",
-          type: "Restaurant Website",
-          features: ["Digital menu", "Online reservations", "Promotion system"],
+        agenciaDeCarros: {
+          description: "Car dealership website with an interactive vehicle catalog, filters, and contact system. Built with Next.js for a modern user experience.",
+          type: "Website",
+          features: ["Vehicle catalog", "Advanced filters", "Modern design"],
         },
-        agueroArtesanal: {
-          description: "Online store dedicated to the creation and sale of handmade wood artisanal products. Dynamic catalog with WhatsApp integration for orders.",
+        perfumeria: {
+          description: "Online perfume and fragrance store with a premium shopping experience, built on Shopify with payment gateway integration.",
           type: "E-commerce",
-          features: ["Dynamic catalog", "WhatsApp integration", "Responsive"],
+          features: ["Online store", "Shopify", "Product catalog"],
+        },
+        cafeteria: {
+          description: "Coffee shop website with an interactive menu, product gallery and modern design focused on the customer experience.",
+          type: "Website",
+          features: ["Interactive menu", "Modern design", "Responsive"],
         },
       },
       individual: {
@@ -367,46 +337,6 @@ export const translations = {
             ],
           },
           role: "UX/UI designer and full-stack web developer responsible for the complete design and implementation of the system, including data architecture and user experience.",
-        },
-        kimchis: {
-          description: "Digital platform created to improve the gastronomic experience of the Korean restaurant. Includes digital menu, reservation system and promotions.",
-          about: "Kimchis is a complete web platform developed with Laravel and JavaScript to improve the digital experience of the Korean restaurant. The platform includes an interactive digital menu with categories and detailed descriptions of each dish, online reservation system with real-time availability validation, featured promotions section for special offers, and fully responsive design optimized for mobile devices. Developed following rapid prototyping methodology with constant client feedback, it uses MVC architecture with Laravel for code organization, robust reservation system implementation with validations, and vanilla JavaScript integration for interactivity. The platform was successfully implemented significantly improving the restaurant's digital experience and facilitating the reservation process for customers.",
-          features: [
-            "Interactive digital menu",
-            "Online reservation system",
-            "Exclusive promotions and discounts",
-            "Mobile-optimized interface",
-          ],
-          methodology: {
-            title: "Development focused on solving specific restaurant needs, using rapid prototyping methodology and client validation.",
-            items: [
-              "Iterative development with constant client feedback",
-              "Responsive-first design for mobile experience",
-              "MVC architecture with Laravel for code organization",
-              "Reservation system implementation with validations",
-            ],
-          },
-          role: "I was responsible for the complete development of the platform, from requirements analysis to implementation and deployment, working directly with the client.",
-        },
-        agueroArtesanal: {
-          description: "Online store dedicated to the creation and sale of handmade wood artisanal products. Dynamic catalog with WhatsApp integration for orders.",
-          about: "Agüero Artesanal is a complete online store developed with WordPress and Elementor for the sale of handmade wood artisanal products. The platform includes a dynamic catalog with high-quality image gallery for each product, category filter system for easy navigation, direct WhatsApp integration for immediate contact and custom orders, fully responsive design optimized for all mobile devices, and use of WordPress to facilitate content management by the client. Developed following iterative design and development methodology, it leverages CMS capabilities to create an efficient and easy-to-maintain solution. The site is fully operational and deployed on Pantheon, allowing the client to easily manage their content and receive inquiries through WhatsApp. The solution is scalable and easy to maintain.",
-          features: [
-            "Dynamic product catalog with category filters",
-            "WhatsApp integration for quick contact and orders",
-            "Responsive site optimized for mobile devices",
-            "Built with WordPress + custom plugins",
-          ],
-          methodology: {
-            title: "WordPress-based development using iterative design and development methodology, leveraging CMS capabilities to create an efficient and easy-to-maintain solution.",
-            items: [
-              "WordPress development and theme customization",
-              "Use of Elementor for visual design without code",
-              "Gutenberg implementation for dynamic content",
-              "Responsive design with mobile-first approach",
-            ],
-          },
-          role: "I completely developed the online store, from initial WordPress setup to plugin customization and WhatsApp integration for orders.",
         },
       },
     },
