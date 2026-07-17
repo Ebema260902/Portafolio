@@ -12,7 +12,7 @@ import Bento from "./pages/Bento.jsx";
 
 function AppLayout() {
   const location = useLocation();
-  const isBento = location.pathname === "/bento";
+  const isBento = location.pathname === "/" || location.pathname === "/bento";
 
   return (
     <>
@@ -22,12 +22,13 @@ function AppLayout() {
         </div>
       )}
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Bento />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/bento" element={<Bento />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/ticolancer" element={<Ticolancer />} />
         <Route path="/jint" element={<Jint />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/bento" element={<Bento />} />
       </Routes>
       {!isBento && <Footer />}
     </>

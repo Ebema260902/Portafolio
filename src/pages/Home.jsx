@@ -147,7 +147,7 @@ const Home = () => {
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                             <Link
-                                to="/projects"
+                                to="/"
                                 className={`min-h-[48px] px-6 py-3 bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white font-semibold rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 active:shadow-md active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${isLight ? "focus:ring-offset-white" : "focus:ring-offset-black"}`}
                                 aria-label={language === "es" ? "Ver todos mis proyectos" : "View all my projects"}
                             >
@@ -271,7 +271,7 @@ const Home = () => {
                                 {t.home.projects.title}
                             </h2>
                             <Link
-                                to="/projects"
+                                to="/"
                                 className={`text-sm font-semibold transition-colors ${isLight ? "text-[#3b82f6] hover:text-[#2563eb]" : "text-[#60a5fa] hover:text-[#3b82f6]"}`}
                             >
                                 {t.home.projects.viewAll} →
@@ -284,7 +284,7 @@ const Home = () => {
                             {projects.slice(3).map((repo, i) => renderProjectCard(repo, i + 3, "h-52 sm:h-56"))}
                         </div>
                         <Link
-                            to="/projects"
+                            to="/"
                             className={`block w-full min-h-[44px] flex items-center justify-center bg-gradient-to-r from-[#3b82f6] to-[#2563eb] hover:from-[#2563eb] hover:to-[#1d4ed8] active:from-[#1d4ed8] active:to-[#1e40af] text-white text-center py-3 px-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-[#3b82f6]/50 font-medium text-base focus:outline-none focus:ring-2 focus:ring-[#3b82f6] focus:ring-offset-2 ${isLight ? "focus:ring-offset-white" : "focus:ring-offset-black"}`}
                             aria-label={language === "es" ? "Explorar todos los proyectos del portafolio" : "Explore all portfolio projects"}
                         >
