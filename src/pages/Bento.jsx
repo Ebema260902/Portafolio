@@ -213,10 +213,11 @@ const Bento = () => {
   const es = language === 'es';
 
   /*
-    Project render order in the right sub-grid:
-    Row 1 (3 cols): Reckless [0] | Cafetería [1] | Casa Agüero [2]
-    Row 2 (3 cols): Perfumería [3] | Toyo [4] | Safari [5]
-    Row 3 (3 cols): Ticolancer [6] (col-span-2) | Jint [7] (col-span-1)
+    Project render order — bento grid with varied row heights:
+    Row 1 (310px): Reckless [0] | Dra. Elena [1] | Agencia [2]
+    Row 2 (240px): Safari [3] (col-span-2) | Cafetería [4]
+    Row 3 (240px): Casa [5] | Perfumería [6] | Jint [7]
+    Row 4 (300px): Ticolancer [8] (col-span-3, full width)
   */
   const projects = [
     /* 0 */ {
@@ -226,8 +227,36 @@ const Bento = () => {
       image: '/assets/images/barberia/barberia.jpeg',
       imagePos: 'center center',
       link: 'https://reckless-nu.vercel.app/',
+      isExternal: true,
     },
     /* 1 */ {
+      name: 'Dra. Elena Murillo',
+      shortDesc: es ? 'Membresías de medicina integral en Escazú.' : 'Integrative medicine memberships in Escazú.',
+      tag: es ? 'SITIO WEB' : 'WEBSITE',
+      image: '/assets/images/dra-elena/elena.jpg',
+      imagePos: 'center center',
+      link: 'https://dra-elena-murillo.vercel.app/',
+      isExternal: true,
+    },
+    /* 2 */ {
+      name: 'Agencia de vehículos',
+      shortDesc: es ? 'Landing page para agencia de vehículos.' : 'Landing page for vehicle dealership.',
+      tag: 'LANDING PAGE',
+      image: '/assets/images/toyo/catalogagencia.png',
+      imagePos: 'top center',
+      link: 'https://agencia-de-carros.vercel.app/',
+      isExternal: true,
+    },
+    /* 3 — double wide */ {
+      name: 'Plaza Zona Safari',
+      shortDesc: es ? 'Directorio digital para centro comercial.' : 'Digital directory for shopping center.',
+      tag: es ? 'DIRECTORIO' : 'DIRECTORY',
+      image: '/assets/images/zonasafari/safari.jpg',
+      imagePos: 'center center',
+      link: 'https://zona-safari.vercel.app/',
+      isExternal: true,
+    },
+    /* 4 */ {
       name: 'Cafetería',
       shortDesc: es ? 'Menú digital y galería para cafetería artesanal.' : 'Digital menu and gallery for artisan coffee shop.',
       tag: es ? 'CAFETERÍA' : 'COFFEE SHOP',
@@ -236,15 +265,16 @@ const Bento = () => {
       link: 'https://cafeteria-red-eta.vercel.app/',
       isExternal: true,
     },
-    /* 2 */ {
+    /* 5 */ {
       name: 'Casa Agüero',
       shortDesc: es ? 'Presencia digital para negocio familiar artesanal.' : 'Digital presence for local artisan family business.',
       tag: es ? 'SITIO WEB' : 'WEBSITE',
       image: '/assets/images/agueroartesanal/agueroartesanal.png',
       imagePos: 'center center',
       link: 'https://casa-ag-ero.vercel.app/',
+      isExternal: true,
     },
-    /* 3 */ {
+    /* 6 */ {
       name: 'Perfumería',
       shortDesc: es ? 'Tienda online con experiencia de compra premium.' : 'Online store with premium shopping experience.',
       tag: 'E-COMMERCE',
@@ -253,24 +283,16 @@ const Bento = () => {
       link: 'https://perfume-store-9757.myshopify.com/',
       isExternal: true,
     },
-    /* 4 */ {
-      name: 'Agencia de vehículos',
-      shortDesc: es ? 'Landing page para agencia de vehículos.' : 'Landing page for vehicle dealership.',
-      tag: 'LANDING PAGE',
-      image: '/assets/images/toyo/catalogagencia.png',
+    /* 7 */ {
+      name: 'Jint',
+      shortDesc: es ? 'App web de gestión de tareas y proyectos.' : 'Task and project management web app.',
+      tag: 'APP WEB',
+      image: '/assets/images/jint/jint5.png',
       imagePos: 'top center',
-      link: 'https://agencia-de-carros.vercel.app/',
+      link: '/jint',
+      isExternal: false,
     },
-    /* 5 */ {
-      name: 'Plaza Zona Safari',
-      shortDesc: es ? 'Directorio digital para centro comercial.' : 'Digital directory for shopping center.',
-      tag: es ? 'PRÓXIMAMENTE' : 'COMING SOON',
-      image: '/assets/images/zonasafari/safari.jpg',
-      imagePos: 'center center',
-      link: null,
-      comingSoon: true,
-    },
-    /* 6 */ {
+    /* 8 — full-width featured */ {
       name: 'Ticolancer',
       shortDesc: es
         ? 'Plataforma para conectar freelancers con clientes en Costa Rica.'
@@ -279,15 +301,6 @@ const Bento = () => {
       image: '/assets/images/ticolancer/ticolancer-home.png',
       imagePos: 'top center',
       link: '/ticolancer',
-      isExternal: false,
-    },
-    /* 7 */ {
-      name: 'Jint',
-      shortDesc: es ? 'App web de gestión de tareas y proyectos.' : 'Task and project management web app.',
-      tag: 'APP WEB',
-      image: '/assets/images/jint/jint5.png',
-      imagePos: 'top center',
-      link: '/jint',
       isExternal: false,
     },
   ];
@@ -312,25 +325,42 @@ const Bento = () => {
           <h2 className="block lg:hidden text-xl font-bold text-white tracking-tight">
             {es ? 'Proyectos' : 'Projects'}
           </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[240px]">
+        <div className="bento-right-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-[240px]">
 
-          {/* Row 1 — freelance trio */}
+          {/* Row 1 (310px) */}
           <ProjectCard project={projects[0]} />
           <ProjectCard project={projects[1]} />
           <ProjectCard project={projects[2]} />
 
-          {/* Row 2 — freelance trio */}
-          <ProjectCard project={projects[3]} />
+          {/* Row 2 (240px) — Safari double-wide */}
+          <ProjectCard project={projects[3]} className="lg:col-span-2" />
           <ProjectCard project={projects[4]} />
-          <ProjectCard project={projects[5]} />
 
-          {/* Row 3 — featured close: Ticolancer 2/3 + Jint 1/3 */}
-          <ProjectCard project={projects[6]} featured className="lg:col-span-2" />
+          {/* Row 3 (240px) */}
+          <ProjectCard project={projects[5]} />
+          <ProjectCard project={projects[6]} />
           <ProjectCard project={projects[7]} />
+
+          {/* Row 4 (300px) — Ticolancer full width */}
+          <ProjectCard project={projects[8]} featured className="lg:col-span-3" />
 
         </div>
         </div>
       </div>
+
+      {/* ── Floating WhatsApp button ───────────────────────────── */}
+      <a
+        href="https://wa.me/50662076022"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={es ? 'Contactar por WhatsApp' : 'Contact via WhatsApp'}
+        className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full shadow-lg shadow-black/40 transition-transform duration-200 hover:scale-110 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950 focus:ring-green-400"
+        style={{ background: '#25D366' }}
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
     </main>
   );
 };

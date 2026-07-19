@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@media (min-width: 1024px) {
+  .bento-right-grid {
+    grid-template-rows: 310px 240px 240px 300px;
+  }
+}
+
 /* Accesibilidad: Estilos para screen readers */
 .sr-only {
     position: absolute;
